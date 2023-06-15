@@ -23,7 +23,7 @@
 <body>
 
     <header>
-        <jsp:include page="../main/boardInfo_header.jsp"/>
+        <jsp:include page="../main/boardInfo_header.jsp" />
     </header>
 
     <form name="frm_write" method="post" action="write_process.jsp" onsubmit="return validateForm()">

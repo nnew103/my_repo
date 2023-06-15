@@ -147,34 +147,77 @@ public class BoardInfoDAO extends DBConnectionPool {
 		}
 
 	}
-	
-	//지정한 게시물을 찾아 내용을 반환하는 메소드
-		public BoardInfoVO selectView(int board_idx) {
-			BoardInfoVO vo = new BoardInfoVO();
-			
-			String sql = "select * from board_info where board_idx = ?";
-			
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, board_idx);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					vo.setBoard_idx(rs.getInt("board_idx"));
-					vo.setTitle(rs.getString("title"));
-					vo.setContent(rs.getString("content"));
-					vo.setPost_date(rs.getDate("post_date"));
-					vo.setMember_idx(rs.getInt("member_idx"));
-					vo.setMember_id(rs.getString("member_id"));
-					vo.setRead_count(rs.getInt("read_count"));
-					vo.setDel_or_not(rs.getInt("del_or_not"));
-				}
-				
-			}catch(Exception e) {
-				System.out.println("게시물 상세보기 중 예외 발생");
-				e.printStackTrace();
+
+	// 지정한 게시물을 찾아 내용을 반환하는 메소드
+	public BoardInfoVO selectView(int board_idx) {
+		BoardInfoVO vo = new BoardInfoVO();
+
+		String sql = "select * from board_info where board_idx = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_idx);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				vo.setBoard_idx(rs.getInt("board_idx"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setPost_date(rs.getDate("post_date"));
+				vo.setMember_idx(rs.getInt("member_idx"));
+				vo.setMember_id(rs.getString("member_id"));
+				vo.setRead_count(rs.getInt("read_count"));
+				vo.setDel_or_not(rs.getInt("del_or_not"));
 			}
-			return vo;
+
+		} catch (Exception e) {
+			System.out.println("게시물 상세보기 중 예외 발생");
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+	// 글 삭제
+	public int deletePost(BoardInfoVO vo) {
+		int result = 0; // 게시글 삭제 실패시 반환값
+
+		try {
+			String sql = "delete from board_info where board_idx=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getBoard_idx());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("게시물 삭제 중 예외 발생");
+			e.printStackTrace();
 		}
 
+		return result;
+	}
+
+	// 지정한 게시물의 내용을 수정하는 메소드
+	public int updateBoard(BoardInfoVO vo) {
+		int result = 0;// 수정 실패했을 때 반환값
+
+		try {
+			String sql = "update board_info set " + "title=?, content=? " + "where board_idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setInt(3, vo.getBoard_idx());
+
+			// 쿼리문 실행 후 적용된 행의 수 반환
+			// 성공 시 1 반환
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
 }

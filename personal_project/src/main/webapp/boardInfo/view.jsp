@@ -27,7 +27,7 @@ function deletePost() {
     if (confirmAns) {
     	
         frm_view.method = "post"; // 전송 방식 
-        frm_view.action = "delete_process.jsp?no=${boardVo.board_idx}"; // 전송 경로
+        frm_view.action = "delete_process.jsp?no=${boardInfoVO.board_idx}"; // 전송 경로
         frm_view.submit(); // 폼값 전송
         
     }
@@ -41,7 +41,7 @@ function deletePost() {
 <body>
 
 <header>
-	<jsp:include page="../main/header.jsp"/>
+	<jsp:include page="../main/boardInfo_header.jsp" />
 </header>
 
 <form name="frm_view">
