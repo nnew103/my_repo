@@ -45,7 +45,7 @@ footer {
 <body>
 
 	<header>
-		<jsp:include page="../main/header.jsp" />
+		<jsp:include page="../main/memberProcess_header.jsp" />
 	</header>
 
 	<div id="container">
@@ -53,7 +53,7 @@ footer {
 		<form action="update_process.jsp" method="post" name="frm_update">
 			<p>
 				<label>아이디<br> <input type="text" id="id"
-					value="${member.member_id}" disabled> <input type="hidden"
+					value="${member_info.member_id}" disabled> <input type="hidden"
 					name="member_id" value="${member_info.member_id}">
 				</label>
 			</p>
