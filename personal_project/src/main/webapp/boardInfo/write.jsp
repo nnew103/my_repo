@@ -33,7 +33,7 @@
                 <th>작성자</th>
                 <td>
                     <input type="text" value="${member_info.member_id}" disabled>
-                    <input type="hidden" name="member_name" value="${member_info.member_id}">
+                    <input type="hidden" name="member_id" value="${member_info.member_id}">
                     <input type="hidden" name="member_idx" value="${member_info.member_idx}">
                 </td>
             </tr>

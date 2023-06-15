@@ -16,11 +16,9 @@ int result = dao.insertBoard(vo);
 dao.close();
 
 if(result == 1){ //글등록 성공시
-	response.sendRedirect("login_list.jsp");
+	response.sendRedirect("list.jsp");
 
 }else{//글등록 실패시
 	JSFunction.alertBack("글등록에 실패했습니다", out);
 }
-
-
 %>

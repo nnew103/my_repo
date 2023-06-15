@@ -110,10 +110,10 @@ int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 	<table id="tbl_list">
 		<tr>
 			<th width="">번호</th>
-			<th width="">제목</th>
+			<th width="">순번</th>
 			<th width="">작성자</th>
-			<th width="">조회수</th>
 			<th width="">등록일</th>
+			<th width="">조회수</th>
 		</tr>
 
 		<!-- 글목록 내용-->
@@ -131,9 +131,9 @@ int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 						<td id="td_title"><a
 							href="view.jsp?no=${boardList[rowNum-1].board_idx}">${boardList[rowNum-1].title}</a>
 						</td>
-						<td>${boardList[rowNum-1].member_name}</td>
-						<td>${boardList[rowNum-1].read_count}</td>
+						<td>${boardList[rowNum-1].member_id}</td>
 						<td>${boardList[rowNum-1].post_date}</td>
+						<td>${boardList[rowNum-1].read_count}</td>
 					</tr>
 				</c:forEach>
 
