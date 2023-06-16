@@ -22,7 +22,7 @@
 			<!-- 회원용 -->
 			${member_info.member_name}님&nbsp;&nbsp;<a href="../index.jsp">홈</a>
 			<a href="list.jsp">정보공유</a>
-			<a href="../index.jsp">중고거래/자료나눔</a>
+			<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
 			<a href="../index.jsp">공지사항</a>
 			<a href="../memberProcess/logout.jsp">LOGOUT</a>
 			<a href="../memberProcess/update.jsp">회원정보수정</a>
@@ -31,7 +31,7 @@
 			<!-- 일반용 -->
 			<a href="../index.jsp">홈</a>
 			<a href="list.jsp">정보공유</a>
-			<a href="../index.jsp">중고거래/자료나눔</a>
+			<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
 			<a href="../index.jsp">공지사항</a>
 
 			<a href="../memberProcess/login.jsp">LOGIN</a>
