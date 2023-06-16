@@ -89,7 +89,7 @@ int lastPageBlock = (int)Math.ceil((double)totalPageNum/pages_per_block);
 </head>
 <body>
     <header>
-        <jsp:include page="../main/header.jsp"/>
+        <jsp:include page="../main/boardFile_header.jsp"/>
     </header>
 
     <!-- 검색 폼 -->
@@ -120,9 +120,9 @@ int lastPageBlock = (int)Math.ceil((double)totalPageNum/pages_per_block);
             <th width="">번호</th>
             <th width="">제목</th>
             <th width="">작성자</th>
-            <th width="">조회수</th>
-            <th width="">등록일</th>
             <th width="">첨부</th>
+            <th width="">등록일</th>
+            <th width="">조회수</th>
         </tr>
 
         <!-- 글목록 내용-->
@@ -140,9 +140,7 @@ int lastPageBlock = (int)Math.ceil((double)totalPageNum/pages_per_block);
 						<td id="td_title">
 							<a href="view.jsp?no=${boardList[rowNum-1].board_idx}">${boardList[rowNum-1].title}</a>
 						</td>
-						<td>${boardList[rowNum-1].member_name}</td>
-						<td>${boardList[rowNum-1].read_count}</td>
-						<td>${boardList[rowNum-1].post_date}</td>
+						<td>${boardList[rowNum-1].member_id}</td>
 						<td style="padding-left:20px">
 							<c:if test="${!empty boardList[rowNum-1].originFile}">
 								<a href="download.jsp?oName=${boardList[rowNum-1].originFile}&sName=${boardList[rowNum-1].saveFile}">
@@ -150,6 +148,8 @@ int lastPageBlock = (int)Math.ceil((double)totalPageNum/pages_per_block);
 								</a>
 							</c:if>
 						</td>
+						<td>${boardList[rowNum-1].post_date}</td>
+						<td>${boardList[rowNum-1].read_count}</td>
 					</tr>
 				</c:forEach>
 				
@@ -164,7 +164,7 @@ int lastPageBlock = (int)Math.ceil((double)totalPageNum/pages_per_block);
     </table>
  	
 	<!-- 목록 하단에 글등록 버튼 구현 -->
-	<c:if test="${!empty member}">
+	<c:if test="${!empty member_info}">
 		<div id="div_write">
 			<a href="write.jsp"><button id="write_btn">글등록</button></a>
 		</div>
