@@ -70,7 +70,7 @@ public class MemberInfoDAO extends DBConnectionPool {
 
 		try {
 			String sql = "insert into memberinfo (member_idx, member_id, member_pw, member_name, "
-					+ "handphone,member_email) values (member_seq.nextval,?,?,?,?,?)";
+					+ "handphone,member_email) values (memberinfo_seq.nextval,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMember_id());
 			pstmt.setString(2, vo.getMember_pw());
