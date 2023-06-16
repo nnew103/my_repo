@@ -6,36 +6,121 @@
 <head>
 <meta charset="UTF-8">
 <title>Header</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'NanumBarunGothic';
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:link {
+	color: #15075f;
+}
+
+a:hover {
+	color: #0B2161;
+}
+
+a:active {
+	color: #0B2161;
+}
+
+img {
+	width: 500px;
+	height: 100px;
+}
+
+#logo {
+	position: absolute;
+	left: 40px;
+	top: 40px;
+}
+
+#member {
+	margin-top: 10px;
+	text-align: right;
+}
+
+#menu {
+	position: absolute;
+	right: 60px;
+	top: 125px;
+}
+
+#menuID {
+	width: 100%;
+	margin-right: 80px;
+}
+</style>
+
+<script>
+	function link(url) {
+		/* window.location = url;//현재의 윈도우에 url 웹페이지를 출력 */
+		window.open(url, '_top');
+		/* header.html파일이 iframe으로 다른 페이지에 삽입되기 때문에
+		출력되는 화면을 브라우저(_top)로 지정해줌. iframe도 윈도우이기 때문에 
+		페이지 링크를 브라우저로 지정해주지 않으면 iframe이 가지는 윈도우에 링크된
+		페이지를 출력함 */
+	}
+</script>
+
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
+<!-- 나눔바른고딕
+	font-family: 'NanumBarunGothicExtraLight';
+	font-family: 'NanumBarunGothicLight';
+	font-family: 'NanumBarunGothic';
+	font-family: 'NanumBarunGothicBold';
+	-->
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
+	rel="stylesheet">
+<!-- 나눔고딕
+	font-family: 'NanumGothicLight';
+	font-family: 'NanumGothic';
+	font-family: 'NanumGothicBold';
+	font-family: 'NanumGothicExtraBold';
+-->
 </head>
 <body>
-<!-- 
-	<a href="../index.jsp">홈</a>
-	<a href="../index.jsp">정보공유</a>
-	<a href="../index.jsp">중고거래/자료나눔</a>
-	<a href="../index.jsp">공지사항</a>
-	<a href="memberProcess/login.jsp">LOGIN</a>
-	<a href="memberProcess/join.jsp">JOIN</a>
- -->
+
+	<div id="logo">
+		<img src="resources/img/main_logo.png" />
+	</div>
 
 	<c:choose>
 		<c:when test="${!empty member_info}">
 			<!-- 회원용 -->
-			${member_info.member_name}님&nbsp;&nbsp;<a href="index.jsp">홈</a>
-			<a href="boardInfo/list.jsp">정보공유</a>
-			<a href="boardFile/list.jsp">중고거래/자료나눔</a>
-			<a href="../index.jsp">공지사항</a>
-			<a href="memberProcess/logout.jsp">LOGOUT</a>
-			<a href="memberProcess/update.jsp">회원정보수정</a>
+			<div id="member">
+				${member_info.member_name}님&nbsp;&nbsp; <a
+					href="memberProcess/logout.jsp">LOGOUT</a>
+					<a href="memberProcess/update.jsp">회원정보수정</a>
+			</div>
+			<div id="menu">
+				<a href="index.jsp">홈</a> <a href="boardInfo/list.jsp">정보공유</a>
+				<a href="boardFile/list.jsp">중고거래/자료나눔</a>
+				<a href="../index.jsp">공지사항</a>
+			</div>
 		</c:when>
 		<c:otherwise>
 			<!-- 일반용 -->
-			<a href="index.jsp">홈</a>
-			<a href="boardInfo/list.jsp">정보공유</a>
-			<a href="boardFile/list.jsp">중고거래/자료나눔</a>
-			<a href="../index.jsp">공지사항</a>
-
-			<a href="memberProcess/login.jsp">LOGIN</a>
-			<a href="memberProcess/join.jsp">JOIN</a>
+			<div id="member">
+				<a href="memberProcess/login.jsp">LOGIN</a>
+				<a href="memberProcess/join.jsp">JOIN</a>
+			</div>
+			<div id="menu">
+				<a href="index.jsp">홈</a>
+				<a href="boardInfo/list.jsp">정보공유</a>
+				<a href="boardFile/list.jsp">중고거래/자료나눔</a>
+				<a href="../index.jsp">공지사항</a>
+			</div>
 		</c:otherwise>
 	</c:choose>
 </body>

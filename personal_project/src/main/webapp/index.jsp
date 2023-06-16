@@ -12,37 +12,37 @@
 	padding: 0;
 }
 
-header {
-	position: fixed;
-	top: 0px;
-	text-align: right;
+#header {
+	display: flex;
+	border: none;
 	width: 100%;
-	height: 50px;
-	line-height: 50px;
+	top: 0px;
+	vertical-align: middle;
+	background-color: #EFF2FB;
 }
 
 #content {
-	width: 800px;
-	height: 500px;
+	width: 1000px;
+	height: 600px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	margin-left: -400px;
-	margin-top: -270px;
+	top: 54%;
+	margin-left: -500px;
+	margin-top: -300px;
 	background-image: url("resources/img/main_picture.PNG");
-	background-size: 800px 500px;
+	background-size: 1000px 600px;
 	background-repeat: no-repeat;
 }
 
-footer {
-	position: fixed;
-	bottom: 0px;
-	text-align: center;
-	width: 100%;
-	height: 90px;
-	line-height: 30px;
-}
+footer{
+		position:fixed;
+		bottom: 0px;
+		width: 100%;
+		height: 90px;
+		line-height: 30px;
+	}
 </style>
+
 </head>
 <body>
 	<header>
