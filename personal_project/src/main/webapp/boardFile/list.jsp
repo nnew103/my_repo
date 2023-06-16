@@ -74,7 +74,7 @@ int lastPageBlock = (int)Math.ceil((double)totalPageNum/pages_per_block);
 <meta charset="UTF-8">
 <title>글목록</title>
 
-<link rel="stylesheet" href="../resources/css/list_jsp.css" >
+<link rel="stylesheet" href="../resources/css/common.css" >
 
 <style>
 	#td_paging{

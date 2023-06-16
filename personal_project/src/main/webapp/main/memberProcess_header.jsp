@@ -6,36 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Header</title>
+
+<link rel="stylesheet" href="../resources/css/header_jsp.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 </head>
 <body>
-	<!-- 
-	<a href="../index.jsp">홈</a>
-	<a href="../index.jsp">정보공유</a>
-	<a href="../index.jsp">중고거래/자료나눔</a>
-	<a href="../index.jsp">공지사항</a>
-	<a href="memberFunction/login.jsp">LOGIN</a>
-	<a href="memberFunction/join.jsp">JOIN</a>
- -->
+	<div id="logo">
+		<img src="../resources/img/main_logo.png" />
+	</div>
 
 	<c:choose>
 		<c:when test="${!empty member_info}">
 			<!-- 회원용 -->
-			${member_info.member_name}님&nbsp;&nbsp;<a href="../index.jsp">홈</a>
-			<a href="../boardInfo/list.jsp">정보공유</a>
-			<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
-			<a href="../index.jsp">공지사항</a>
-			<a href="logout.jsp">LOGOUT</a>
-			<a href="update.jsp">회원정보수정</a>
+			<div id="member">
+				<a href="logout.jsp">LOGOUT</a> | 
+				<a href="update.jsp">회원정보수정</a>
+			</div>
+			<div id="menu">
+				${member_info.member_name}님&nbsp;&nbsp;<a href="../index.jsp">홈</a>
+				<a href="../boardInfo/list.jsp">정보공유</a>
+				<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
+				<a href="../index.jsp">공지사항</a>
+			</div>
 		</c:when>
 		<c:otherwise>
 			<!-- 일반용 -->
-			<a href="../index.jsp">홈</a>
-			<a href="../boardInfo/list.jsp">정보공유</a>
-			<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
-			<a href="../index.jsp">공지사항</a>
-
-			<a href="login.jsp">LOGIN</a>
-			<a href="join.jsp">JOIN</a>
+			<div id="member">
+				<a href="login.jsp">LOGIN</a> | 
+				<a href="join.jsp">JOIN</a>
+			</div>
+			<div id="menu">
+				<a href="../index.jsp">홈</a>
+				<a href="../boardInfo/list.jsp">정보공유</a>
+				<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
+				<a href="../index.jsp">공지사항</a>
+			</div>
 		</c:otherwise>
 	</c:choose>
 </body>

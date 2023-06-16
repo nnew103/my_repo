@@ -1,12 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>메인페이지</title>
-
-<style>
+@charset "UTF-8";
 * {
 	margin: 0;
 	padding: 0;
@@ -43,18 +35,3 @@ footer {
 	height: 90px;
 	background-color: #EFF2FB;
 }
-</style>
-
-</head>
-<body>
-	<header>
-		<jsp:include page="main/header.jsp" />
-	</header>
-
-	<section id="content"></section>
-
-	<footer>
-		<jsp:include page="main/footer.jsp" />
-	</footer>
-</body>
-</html>

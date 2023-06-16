@@ -7,58 +7,6 @@
 <meta charset="UTF-8">
 <title>Header</title>
 
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	font-family: 'NanumBarunGothic';
-}
-
-a {
-	text-decoration: none;
-	font-weight: bold;
-}
-
-a:link {
-	color: #15075f;
-}
-
-a:hover {
-	color: #0B2161;
-}
-
-a:active {
-	color: #0B2161;
-}
-
-img {
-	width: 500px;
-	height: 100px;
-}
-
-#logo {
-	position: absolute;
-	left: 40px;
-	top: 40px;
-}
-
-#member {
-	margin-top: 10px;
-	text-align: right;
-}
-
-#menu {
-	position: absolute;
-	right: 60px;
-	top: 125px;
-}
-
-#menuID {
-	width: 100%;
-	margin-right: 80px;
-}
-</style>
-
 <script>
 	function link(url) {
 		/* window.location = url;//현재의 윈도우에 url 웹페이지를 출력 */
@@ -69,6 +17,8 @@ img {
 		페이지를 출력함 */
 	}
 </script>
+
+<link rel="stylesheet" href="resources/css/header_jsp.css">
 
 <link
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
@@ -99,9 +49,9 @@ img {
 		<c:when test="${!empty member_info}">
 			<!-- 회원용 -->
 			<div id="member">
-				${member_info.member_name}님&nbsp;&nbsp; <a
-					href="memberProcess/logout.jsp">LOGOUT</a>
-					<a href="memberProcess/update.jsp">회원정보수정</a>
+				${member_info.member_name}님&nbsp;&nbsp; 
+				<a href="memberProcess/logout.jsp">LOGOUT</a> |
+				<a href="memberProcess/update.jsp">회원정보수정</a>
 			</div>
 			<div id="menu">
 				<a href="index.jsp">홈</a> <a href="boardInfo/list.jsp">정보공유</a>
@@ -112,7 +62,7 @@ img {
 		<c:otherwise>
 			<!-- 일반용 -->
 			<div id="member">
-				<a href="memberProcess/login.jsp">LOGIN</a>
+				<a href="memberProcess/login.jsp">LOGIN</a> |
 				<a href="memberProcess/join.jsp">JOIN</a>
 			</div>
 			<div id="menu">

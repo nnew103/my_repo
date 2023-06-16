@@ -11,13 +11,13 @@
 	font-family: 'NanumGothic';
 }
 </style>
-<link
-	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
-	rel="stylesheet">
 </head>
 <body>
 	충남 천안시 동남구 대흥로 215, 7층 T.041-561-1122
 	<br> 개인정보 처리방침 | 이용약관
 	<br> Copyrightⓒ2023 휴먼교육센터. All right reserved.
 </body>
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
+	rel="stylesheet">
 </html>
