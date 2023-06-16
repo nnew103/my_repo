@@ -2,7 +2,7 @@ package vo;
 
 import java.util.Date;
 
-public class BoardFileVo {
+public class BoardFileVO{
 	private int board_idx;
 	private String title;
 	private String content;
@@ -11,7 +11,7 @@ public class BoardFileVo {
 	private Date post_date;
 	private int read_count;
 	private int member_idx;
-	private String member_name;
+	private String member_id;
 	private int del_or_not;
 	private Date del_date;
 	
@@ -63,11 +63,11 @@ public class BoardFileVo {
 	public void setMember_idx(int member_idx) {
 		this.member_idx = member_idx;
 	}
-	public String getMember_name() {
-		return member_name;
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	public int getDel_or_not() {
 		return del_or_not;
@@ -81,6 +81,4 @@ public class BoardFileVo {
 	public void setDel_date(Date del_date) {
 		this.del_date = del_date;
 	}
-	
-	
 }
