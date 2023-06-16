@@ -166,4 +166,10 @@ input {
 		<jsp:include page="../main/footer.jsp" />
 	</footer>
 </body>
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
+	rel="stylesheet">
 </html>

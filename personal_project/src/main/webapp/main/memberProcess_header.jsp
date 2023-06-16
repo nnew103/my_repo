@@ -19,11 +19,12 @@
 		<c:when test="${!empty member_info}">
 			<!-- 회원용 -->
 			<div id="member">
-				<a href="logout.jsp">LOGOUT</a> | 
-				<a href="update.jsp">회원정보수정</a>
+				${member_info.member_name}님&nbsp;&nbsp;
+				<a href="logout.jsp" style="color: black">LOGOUT</a> | 
+				<a href="update.jsp" style="color: black">회원정보수정</a>
 			</div>
 			<div id="menu">
-				${member_info.member_name}님&nbsp;&nbsp;<a href="../index.jsp">홈</a>
+				<a href="../index.jsp">홈</a>
 				<a href="../boardInfo/list.jsp">정보공유</a>
 				<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
 				<a href="../index.jsp">공지사항</a>
@@ -32,8 +33,8 @@
 		<c:otherwise>
 			<!-- 일반용 -->
 			<div id="member">
-				<a href="login.jsp">LOGIN</a> | 
-				<a href="join.jsp">JOIN</a>
+				<a href="login.jsp" style="color: black">LOGIN</a> | 
+				<a href="join.jsp" style="color: black">JOIN</a>
 			</div>
 			<div id="menu">
 				<a href="../index.jsp">홈</a>
