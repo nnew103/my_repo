@@ -64,6 +64,7 @@ input[type="button"] {
 	color: white;
 	cursor: pointer;
 	/*마우스를 올려놓았을 때 커서가 손모양으로 변경됨*/
+	border-radius: 5px;
 }
 </style>
 <script type="text/javascript" src="../resources/js/checkLogin.js"></script>

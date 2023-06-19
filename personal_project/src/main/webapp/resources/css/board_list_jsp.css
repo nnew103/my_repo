@@ -9,6 +9,7 @@
 hr {
 	border: 0;
 	margin: 0 auto;
+	margin-top: 10px;
 	width: 80%;
 	height: 5px;
 	background: #15075f;
@@ -16,15 +17,18 @@ hr {
 
 
 table {
-	margin: 20px auto;
+	margin: 0 auto;
 	margin-top: 30px;
 	width: 80%;
 	border-collapse: collapse;
+	font-size: 22px;
 }
 
-/* #table_title{
+#table_title{
+	text-align:left;
 	font-size: 25px;	
-} */
+	font-family: 'NanumBarunGothicBold';
+}
 
 #tbl_search {
 	top: 50px;
@@ -43,12 +47,6 @@ table {
 	text-align: center;
 }
 
-#tbl_search tr, #tbl_search th, #tbl_search td {
-	border: none;
-    height: 15px;
-    padding: 5px;
-    text-align: center;
-}
 
 tr:last-child th, tr:last-child td {
 	border-bottom: none; /* 마지막 행의 가로선을 제거합니다 */
@@ -73,8 +71,9 @@ select, input {
 	color: black;
 }
 
+
 select, #search_btn {
-	width: 10%;
+	width: 80px;
 }
 
 #searchWord {
@@ -87,6 +86,7 @@ select, #search_btn {
 
 #td_search {
 	text-align: right;
+	font-size: 15px;
 }
 
 #div_write {
@@ -105,6 +105,10 @@ select, #search_btn {
 	bottom: 170px;
 }
 
+#td_search input[type="text"] {
+	width: 180px;
+}
+
 #write_btn {
 	width: 80px;
 	height: 30px;
@@ -114,4 +118,12 @@ select, #search_btn {
 	background-color: #15075f;
 	color: white;
 	border-radius: 20px;
+}
+
+#search_btn{
+	font-family: 'NanumBarunGothic';
+	cursor: pointer;
+	background-color: #15075f;
+	color: white;
+	border-radius: 5px;
 }

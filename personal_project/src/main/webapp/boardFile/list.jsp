@@ -90,8 +90,9 @@ int lastNum = totalRows % rows_per_page;
 		<table id="tbl_search">
 			<tr>
 				<td id="table_title">중고도서 거래/자료 나눔</td>
-				<td id="td_total">총게시물: ${totalRows}</td>
-				<td id="td_search"><select name="searchField">
+				<td id="td_search">
+				총게시물: ${totalRows}
+				<select name="searchField">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 				</select> <input type="text" name="searchWord" id="searchWord"> <input

@@ -86,6 +86,7 @@ input {
 	cursor: pointer;
 	/*마우스를 올려놓았을 때 커서가 손모양으로 변경됨*/
 	font-family: 'NanumBarunGothic';
+	border-radius: 5px;
 }
 
 #update_btn {

@@ -87,19 +87,20 @@ int lastNum = totalRows % rows_per_page;
 
 	<!-- 검색 폼 -->
 	<form>
-		<table id="tbl_search" style="border:solid 1px #000;border-collapse:collapse;">
+		<table id="tbl_search">
 			<tr>
 				<td id="table_title">공지사항</td>
-				<td id="td_total">총게시물: ${totalRows}</td>
-				<td id="td_search"><select name="searchField">
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-				</select> <input type="text" name="searchWord" id="searchWord"> <input
-					type="submit" id="search_btn" value="검색"></td>
+				<td id="td_search" width="500px;">총게시물: ${totalRows} 
+				<select name="searchField">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+				</select> 
+				<input type="text" name="searchWord" id="searchWord"> 
+				<input type="submit" id="search_btn" value="검색"></td>
 			</tr>
 		</table>
 	</form>
-<hr>
+	<hr>
 	<!-- 글목록 테이블 -->
 	<table id="tbl_list">
 		<tr>
