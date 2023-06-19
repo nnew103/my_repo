@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.BoardFileDAO, vo.BoardFileVO" %>    
+<%@ page import="dao.BoardNoticeDAO, vo.BoardNoticeVO" %>    
 
 <%
 int board_idx = Integer.parseInt(request.getParameter("no"));
-BoardFileDAO dao = new BoardFileDAO();
-BoardFileVO vo = dao.selectView(board_idx);
+BoardNoticeDAO dao = new BoardNoticeDAO();
+BoardNoticeVO vo = dao.selectView(board_idx);
 dao.close();
 pageContext.setAttribute("boardVo", vo);
 

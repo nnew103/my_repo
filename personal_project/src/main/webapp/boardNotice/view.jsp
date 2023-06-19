@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.BoardFileDAO, vo.BoardFileVO, util.JSFunction"%>
+<%@ page import="dao.BoardNoticeDAO, vo.BoardNoticeVO, util.JSFunction"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 
 int board_idx = Integer.parseInt(request.getParameter("no"));  // 일련번호 받기 
 
-BoardFileDAO dao = new BoardFileDAO(); // DAO 생성 
+BoardNoticeDAO dao = new BoardNoticeDAO(); // DAO 생성 
 dao.updateReadCount(board_idx); // 조회수 증가 
-BoardFileVO vo = dao.selectView(board_idx); // 게시물 가져오기
+BoardNoticeVO vo = dao.selectView(board_idx); // 게시물 가져오기
 dao.close();
-pageContext.setAttribute("boardFileVo", vo);
+pageContext.setAttribute("BoardNoticeVO", vo);
 
 
 %>
@@ -28,7 +28,7 @@ function deletePost() {
     if (confirmAns) {
     	
         frm_view.method = "post"; // 전송 방식 
-        frm_view.action = "delete_process.jsp?no=${boardFileVo.board_idx}"; // 전송 경로
+        frm_view.action = "delete_process.jsp?no=${BoardNoticeVO.board_idx}"; // 전송 경로
         frm_view.submit(); // 폼값 전송
         
     }
@@ -46,25 +46,25 @@ function deletePost() {
 </header>
 
 <form name="frm_view">
-    <input type="hidden" name="board_idx" value="${boardFileVo.board_idx}" />  <!-- 공통 링크 -->
+    <input type="hidden" name="board_idx" value="${BoardNoticeVO.board_idx}" />  <!-- 공통 링크 -->
 
     <table>
     	<caption>글 내용</caption>
         <tr>
             <th>번호</th>
-            <td>${boardFileVo.board_idx}</td>
+            <td>${BoardNoticeVO.board_idx}</td>
             <th>작성자</th>
-            <td>${boardFileVo.member_id}</td>
+            <td>${BoardNoticeVO.member_id}</td>
         </tr>
         <tr>
             <th>작성일</th>
-            <td>${boardFileVo.post_date}</td>
+            <td>${BoardNoticeVO.post_date}</td>
             <th>조회수</th>
-            <td>${boardFileVo.read_count}</td>
+            <td>${BoardNoticeVO.read_count}</td>
         </tr>
         <tr>
             <th>제목</th>
-            <td colspan="3">${boardFileVo.title}</td>
+            <td colspan="3">${BoardNoticeVO.title}</td>
         </tr>
         <tr>
             <th>내용</th>
@@ -74,16 +74,16 @@ function deletePost() {
         <tr>
             <th>첨부파일</th>
             <td colspan="3" >
-                <a href="download.jsp?oName=${boardFileVo.originFile}&sName=${boardFileVo.saveFile}">
-                	<img src="../uploads/${boardFileVo.saveFile}" width="200px" height="150px"><br>
-                	${boardFileVo.originFile}
+                <a href="download.jsp?oName=${BoardNoticeVO.originFile}&sName=${BoardNoticeVO.saveFile}">
+                	<img src="../uploads/${BoardNoticeVO.saveFile}" width="200px" height="150px"><br>
+                	${BoardNoticeVO.originFile}
                 </a>
             </td> 
         </tr>
         <tr>
             <td colspan="4" id="td_btn">
-	           <c:if test="${(!empty member_info) and (member_info.member_idx eq boardFileVo.member_idx)}" >
-	            	<input type="button" onclick="location.href='edit.jsp?no=${boardFileVo.board_idx}'" value="수정하기">
+	           <c:if test="${(!empty member_info) and (member_info.member_idx eq BoardNoticeVO.member_idx)}" >
+	            	<input type="button" onclick="location.href='edit.jsp?no=${BoardNoticeVO.board_idx}'" value="수정하기">
 	                <input type="button" onclick="deletePost();" value="삭제하기">
 	            </c:if>
                 
