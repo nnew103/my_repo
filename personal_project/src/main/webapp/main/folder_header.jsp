@@ -26,7 +26,7 @@
 			<div id="menu">
 				<a href="../index.jsp">홈</a>
 				<a href="../boardInfo/list.jsp">정보공유</a>
-				<a href="list.jsp">중고거래/자료나눔</a>
+				<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
 				<a href="../boardNotice/list.jsp">공지사항</a>
 			</div>
 		</c:when>
@@ -39,7 +39,7 @@
 			<div id="menu">
 				<a href="../index.jsp">홈</a>
 				<a href="../boardInfo/list.jsp">정보공유</a>
-				<a href="list.jsp">중고거래/자료나눔</a>
+				<a href="../boardFile/list.jsp">중고거래/자료나눔</a>
 				<a href="../boardNotice/list.jsp">공지사항</a>
 			</div>
 		</c:otherwise>

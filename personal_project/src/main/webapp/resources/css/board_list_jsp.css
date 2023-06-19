@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'NanumBarunGothic';
+}
+
+hr {
+	border: 0;
+	margin: 0 auto;
+	width: 80%;
+	height: 5px;
+	background: #15075f;
+}
+
+
+table {
+	margin: 20px auto;
+	margin-top: 30px;
+	width: 80%;
+	border-collapse: collapse;
+}
+
+/* #table_title{
+	font-size: 25px;	
+} */
+
+#tbl_search {
+	top: 50px;
+}
+
+#tbl_list {
+	top: 230px;
+}
+
+#tbl_list tr, #tbl_list th, #tbl_list td {
+	border-color: rgb(199, 198, 198);
+	border-style: solid;
+	border-width: 0 0 2px 0; /* 가로선만 표시합니다 */
+	height: 15px;
+	padding: 5px;
+	text-align: center;
+}
+
+#tbl_search tr, #tbl_search th, #tbl_search td {
+	border: none;
+    height: 15px;
+    padding: 5px;
+    text-align: center;
+}
+
+tr:last-child th, tr:last-child td {
+	border-bottom: none; /* 마지막 행의 가로선을 제거합니다 */
+}
+
+#td_title {
+	text-align: left;
+}
+
+caption {
+	margin-bottom: 30px;
+	margin-top: 70px;
+}
+
+select, input {
+	padding: 5px;
+	border-color: rgb(199, 198, 198);
+	border-style: solid;
+	border-width: 1px;
+	outline-width: 1px;
+	outline-color: #15075f;
+	color: black;
+}
+
+select, #search_btn {
+	width: 10%;
+}
+
+#searchWord {
+	width: 15%;
+}
+
+#tbl_search tr td {
+	border-color: white;
+}
+
+#td_search {
+	text-align: right;
+}
+
+#div_write {
+	width: 100px;
+ 	position: absolute;
+	right: 100px;
+	bottom: 170px;
+ 
+ }
+
+#td_paging {
+	text-align: center;
+	margin-top: 50px;
+	position: absolute;
+	right: 50%;
+	bottom: 170px;
+}
+
+#write_btn {
+	width: 80px;
+	height: 30px;
+	padding: 5px;
+	font-family: 'NanumBarunGothic';
+	cursor: pointer;
+	background-color: #15075f;
+	color: white;
+	border-radius: 20px;
+}

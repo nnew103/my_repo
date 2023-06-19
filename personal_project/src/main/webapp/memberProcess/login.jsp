@@ -15,7 +15,7 @@
 	left: 50%;
 	top: 50%;
 	margin-left: -400px;
-	margin-top: -270px;
+	margin-top: -230px;
 }
 
 #login_logo {

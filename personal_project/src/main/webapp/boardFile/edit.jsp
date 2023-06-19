@@ -49,7 +49,7 @@ pageContext.setAttribute("boardVo", vo);
 <body>
 
     <header>
-        <jsp:include page="../main/boardFile_header.jsp"/>
+        <jsp:include page="../main/folder_header.jsp"/>
     </header>
 
 	<form name="frm_edit" method="post" action="edit_process.jsp" enctype="multipart/form-data"

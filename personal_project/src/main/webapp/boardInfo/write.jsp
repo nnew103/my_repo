@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>글등록</title>
+<style>
+table{
+		margin-top: 200px;
+}
+</style>
 </head>
 	<script>
 		function validateForm(){
@@ -23,7 +28,7 @@
 <body>
 
     <header>
-        <jsp:include page="../main/boardInfo_header.jsp" />
+        <jsp:include page="../main/folder_header.jsp" />
     </header>
 
     <form name="frm_write" method="post" action="write_process.jsp" onsubmit="return validateForm()">

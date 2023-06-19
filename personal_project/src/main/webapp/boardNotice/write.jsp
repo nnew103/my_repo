@@ -30,7 +30,7 @@ table{
 <body>
 
     <header>
-        <jsp:include page="../main/boardFile_header.jsp"/>
+        <jsp:include page="../main/folder_header.jsp"/>
     </header>
 
     <form name="frm_write" method="post" action="write_process.jsp" enctype="multipart/form-data" 
