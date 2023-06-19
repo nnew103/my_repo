@@ -5,11 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>글등록</title>
-<style>
-table{
-		margin-top: 200px;
-}
-</style>
+<link rel="stylesheet" href="../resources/css/common.css">
+<link rel="stylesheet" href="../resources/css/board_write_jsp.css">
 </head>
 <script>
 	function validateForm() {
@@ -33,10 +30,11 @@ table{
 		<jsp:include page="../main/folder_header.jsp" />
 	</header>
 
+	<div class="board_logo" id="board_logo">글 작성</div>
+	<hr>
 	<form name="frm_write" method="post" action="write_process.jsp"
 		enctype="multipart/form-data" onsubmit="return validateForm()">
 		<table>
-			<caption>글등록</caption>
 			<tr>
 				<th>작성자</th>
 				<td><input type="text" value="${member_info.member_id}"
@@ -49,12 +47,12 @@ table{
 				<td><input type="text" name="title"></td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td><textarea name="content" cols="30" rows="10"></textarea></td>
-			</tr>
-			<tr>
 				<th>첨부파일</th>
 				<td><input type="file" name="attachedFile"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><textarea name="content" cols="30" rows="10"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" id="td_btn"><input type="submit" value="작성완료">

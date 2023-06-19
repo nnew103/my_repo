@@ -90,13 +90,12 @@ int lastNum = totalRows % rows_per_page;
 		<table id="tbl_search">
 			<tr>
 				<td id="table_title">공지사항</td>
-				<td id="td_search" width="500px;">총게시물: ${totalRows} 
-				<select name="searchField">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-				</select> 
-				<input type="text" name="searchWord" id="searchWord"> 
-				<input type="submit" id="search_btn" value="검색"></td>
+				<td id="td_search" width="500px;">총게시물: ${totalRows} <select
+					name="searchField">
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+				</select> <input type="text" name="searchWord" id="searchWord"> <input
+					type="submit" id="search_btn" value="검색"></td>
 			</tr>
 		</table>
 	</form>
@@ -166,5 +165,8 @@ int lastNum = totalRows % rows_per_page;
 </body>
 <link
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
 	rel="stylesheet">
 </html>

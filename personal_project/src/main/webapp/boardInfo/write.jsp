@@ -5,11 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>글등록</title>
-<style>
-table{
-		margin-top: 200px;
-}
-</style>
+<link rel="stylesheet" href="../resources/css/common.css">
+<link rel="stylesheet" href="../resources/css/board_write_jsp.css">
 </head>
 	<script>
 		function validateForm(){
@@ -33,7 +30,6 @@ table{
 
     <form name="frm_write" method="post" action="write_process.jsp" onsubmit="return validateForm()">
         <table>
-            <caption>글등록</caption>
             <tr>
                 <th>작성자</th>
                 <td>

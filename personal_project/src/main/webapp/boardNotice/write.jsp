@@ -20,12 +20,8 @@
 		}
 	</script>
 
-<style>
-
-table{
-		margin-top: 200px;
-}
-</style>
+<link rel="stylesheet" href="../resources/css/common.css">
+<link rel="stylesheet" href="../resources/css/board_write_jsp.css">
 
 <body>
 
@@ -36,7 +32,6 @@ table{
     <form name="frm_write" method="post" action="write_process.jsp" enctype="multipart/form-data" 
           onsubmit="return validateForm()">
         <table>
-            <caption>글등록</caption>
             <tr>
                 <th>작성자</th>
                 <td>
