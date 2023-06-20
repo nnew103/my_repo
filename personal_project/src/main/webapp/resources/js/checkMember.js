@@ -53,7 +53,11 @@ function checkInput() {
         alert("전화번호가 입력되지 않았습니다.");
         frm_join.handphone.focus();
         return false;
-    } else if (frm_join.member_email.value.length == 0) {
+    } else if (frm_join.handphone.value.length > 11) {
+        alert("전화번호는 11자 이하여야 합니다.");
+        frm_join.member_id.focus();
+        return false;
+    }else if (frm_join.member_email.value.length == 0) {
         alert("이메일이 입력되지 않았습니다.");
         frm_join.handphone.focus();
         return false;
