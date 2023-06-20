@@ -55,6 +55,7 @@ if (request.getParameter("pageBlock") == null) {
 }
 int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 int lastNum = totalRows % rows_per_page;
+if (totalRows > 9 && lastNum == 0) lastNum = 10;
 %>
 <!-- 변수들을 EL로 사용하기 위해 core라이브러리의 set태그로 다시 변수 저장함 -->
 <c:set var="totalRows" value="<%=totalRows%>" />
@@ -95,6 +96,7 @@ int lastNum = totalRows % rows_per_page;
 				<select name="searchField">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
+						<option value="id">작성자</option>
 				</select> <input type="text" name="searchWord" id="searchWord"> <input
 					type="submit" id="search_btn" value="검색"></td>
 			</tr>
@@ -135,8 +137,7 @@ int lastNum = totalRows % rows_per_page;
 										test="${!empty boardList[rowNum-1].originFile}">
 										<a
 											href="download.jsp?oName=${boardList[rowNum-1].originFile}&sName=${boardList[rowNum-1].saveFile}">
-											<img src="../resources/img/download.png" width="15px"
-											height="17px">
+											<img src="../resources/img/download.png" width="10px" height="12px">
 										</a>
 									</c:if></td>
 								<td>${boardList[rowNum-1].post_date}</td>

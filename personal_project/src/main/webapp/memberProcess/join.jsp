@@ -157,7 +157,7 @@ input {
 					<tr>
 						<td colspan="2" style="text-align: right;"><input
 							type="reset" id="reset_btn" value="취소"> <input
-							type="submit" id="join_btn" value="가입하기"></td>
+							type="button" id="join_btn" value="가입하기"></td>
 					</tr>
 				</table>
 			</form>

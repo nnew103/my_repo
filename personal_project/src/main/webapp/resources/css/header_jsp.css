@@ -23,7 +23,7 @@ a:active {
 	color: #0B2161;
 }
 
-img {
+#header_logo {
 	width: 500px;
 	height: 100px;
 }
@@ -35,7 +35,7 @@ img {
 }
 
 #member {
-	position: fixed;
+	position: absolute;
 	right: 0px;
 	margin-top: 10px;
 }

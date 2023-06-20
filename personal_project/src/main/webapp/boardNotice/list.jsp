@@ -55,6 +55,7 @@ if (request.getParameter("pageBlock") == null) {
 }
 int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 int lastNum = totalRows % rows_per_page;
+if (totalRows > 9 && lastNum == 0) lastNum = 10;
 %>
 <!-- 변수들을 EL로 사용하기 위해 core라이브러리의 set태그로 다시 변수 저장함 -->
 <c:set var="totalRows" value="<%=totalRows%>" />

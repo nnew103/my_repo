@@ -55,6 +55,7 @@ if (request.getParameter("pageBlock") == null) {
 }
 int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 int lastNum = totalRows % rows_per_page;
+if (totalRows > 9 && lastNum == 0) lastNum = 10;
 %>
 <!-- 변수들을 EL로 사용하기 위해 core라이브러리의 set태그로 다시 변수 저장함 -->
 <c:set var="totalRows" value="<%=totalRows%>" />
@@ -90,17 +91,17 @@ int lastNum = totalRows % rows_per_page;
 		<table id="tbl_search">
 			<tr>
 				<td id="table_title">정보공유</td>
-				<td id="td_search">
-				총게시물: ${totalRows}
-				<select name="searchField">
+				<td id="td_search">총게시물: ${totalRows} <select
+					name="searchField">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
+						<option value="id">작성자</option>
 				</select> <input type="text" name="searchWord" id="searchWord"> <input
 					type="submit" id="search_btn" value="검색"></td>
 			</tr>
 		</table>
 	</form>
-<hr>
+	<hr>
 
 	<!-- 글목록 테이블 -->
 	<table id="tbl_list">

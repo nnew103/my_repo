@@ -28,7 +28,6 @@ pageContext.setAttribute("boardVo", vo);
 			return false;
 		}
 	}
-	
 </script>
 
 <link rel="stylesheet" href="../resources/css/edit_jsp.css">
@@ -53,10 +52,12 @@ pageContext.setAttribute("boardVo", vo);
 		<jsp:include page="../main/folder_header.jsp" />
 	</header>
 
+	<div id="edit_logo">글 수정</div>
+	<hr>
+
 	<form name="frm_edit" method="post" action="edit_process.jsp"
 		enctype="multipart/form-data" onsubmit="return validateForm();">
 		<table>
-			<caption>글수정</caption>
 			<tr>
 				<th>작성자</th>
 				<td><input type="text" id="writer"
@@ -69,12 +70,7 @@ pageContext.setAttribute("boardVo", vo);
 			<tr>
 				<th>제목</th>
 				<td><input type="text" class="editable" name="title"
-					value="${boardVo.title}"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea name="content" class="editable" cols="30"
-						rows="10">${boardVo.content}</textarea></td>
+					id="edit_title" value="${boardVo.title}"></td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
@@ -83,12 +79,18 @@ pageContext.setAttribute("boardVo", vo);
 						파일을 선택하면 이전 파일이 교체됩니다</span></td>
 			</tr>
 			<tr>
-				<td id="td_btn" colspan="2"><input type="submit" value="수정하기">
-					<input type="reset" value="다시입력"> <input type="button"
-					value="목록보기" onclick="location.href='list.jsp'"></td>
+				<th>내용</th>
+				<td><textarea name="content" id="view_content" class="editable"
+						cols="30" rows="10">${boardVo.content}</textarea></td>
 			</tr>
 		</table>
 
+		<div id="edit_btn">
+			<input type="reset" value="초기화" id="edit_reset_btn"> <input
+				type="button" value="목록" id="edit_content_btn"
+				onclick="location.href='list.jsp'"> <input type="submit"
+				value="작성완료" id="edit_update_btn">
+		</div>
 
 	</form>
 

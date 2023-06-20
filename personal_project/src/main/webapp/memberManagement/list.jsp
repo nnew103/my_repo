@@ -55,6 +55,7 @@ if (request.getParameter("pageBlock") == null) {
 }
 int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 int lastNum = totalRows % rows_per_page;
+if (totalRows > 9 && lastNum == 0) lastNum = 10;
 %>
 <!-- 변수들을 EL로 사용하기 위해 core라이브러리의 set태그로 다시 변수 저장함 -->
 <c:set var="totalRows" value="<%=totalRows%>" />
@@ -142,7 +143,7 @@ int lastNum = totalRows % rows_per_page;
 							<tr>
 								<td>${rowNum}</td>
 								<td id="td_title">
-								<a href="view.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
+								<a href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
 								</td>
 								<td>${memberList[rowNum-1].member_name}</td>
 								<td>${memberList[rowNum-1].handphone}</td>

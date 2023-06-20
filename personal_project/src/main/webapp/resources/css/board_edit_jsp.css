@@ -1,69 +1,86 @@
 @charset "UTF-8";
-    *{margin: 0; padding: 0;}
-    header { position:fixed;
-			 top: 0px;
-			 text-align:center;
-			 width: 100%;
-			 height: 50px;
-			 line-height: 50px;
-			 background-color: lightgray;
-	}
-    footer { position:fixed;
-			 bottom:0px;
-			 width: 100%;
-			 height: 50px;
-			 line-height: 15px;
-			 text-align:center;
-			 font: 12px Arial, Sans-serif;
-			 background-color:lightgray;	
-	}
-	table{
-		margin: 50px auto;
-		border-collapse: collapse;
-		width: 500px;	
-	}
-	table, tr, th, td{
-		border-color: rgb(199, 198, 198);
-        border-style: solid;
-        border-width: 1px;
-        padding: 5px 15px 5px 5px;
-	}
-	th{
-		background-color: rgb(167, 243, 163);
-	}
-	caption{
-		font: bold 25px Arial, Sans-serif;
-		margin-bottom: 30px;
-		margin-top: 70px;
-	}
-	input, textarea{
-		width: 100%;
-		font: 15px Arial, Sans-serif;
-		border-color: rgb(167, 243, 163);
-        border-style: solid;
-        border-width: 1px;
-        outline-color: rgb(5, 198, 101);
-        outline-width: 1px;
-	}
-	#writer{
-		border-color: white;
-	}
-	.editable{
-		padding: 5px;
-	}
-	input[type="button"], input[type="submit"], input[type="reset"]{
-		width: 20%;
-		padding: 5px;
-		margin: 5px;
-		border-color: rgb(199, 198, 198);
-		cursor: pointer;
-	}
-	input[type="submit"]{
-        background-color: rgb(5, 198, 101);
-        color: white;
-    }
-	#td_btn{
-		height: 100px;
-		text-align: center;
-		border-color: white;
-	}  
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#edit_logo {
+	margin-top: 30px;
+	margin-left: 10%;
+	font-size: 30px;
+	text-align: left;
+	font-family: 'NanumBarunGothic';
+}
+
+hr {
+	border: 0;
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 80%;
+	height: 5px;
+	background: #15075f;
+}
+
+table {
+	margin: 50px auto;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+tr, th, td {
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: rgb(199, 198, 198);
+}
+
+th, td{
+	padding: 5px;
+	text-align: center;
+}
+
+td input[type="text"], td textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+th {
+	font-family: 'NanumBarunGothic';
+}
+
+td {
+	font-family: 'NanumBarunGothicLight';
+	text-align: left;
+}
+
+#writer, #edit_title, #edit_content {
+	text-align: left;
+}
+
+#edit_content{
+	vertical-align: top;
+}
+
+#edit_reset_btn, #edit_content_btn, #edit_update_btn {
+	width: 7%;
+	height: 30px;
+	margin-left: 15px;
+	margin-right: 15px;
+	border: none;
+	border-radius: 5px;
+	font-family: 'NanumBarunGothic';
+	color: white;
+	cursor: pointer;
+}
+
+#edit_reset_btn {
+	background: #E97384; /* 분홍 */
+}
+
+#edit_content_btn {
+	background: #15075f;
+}
+
+#edit_update_btn{
+	background: #FDBD30; /* 노랑 */
+}

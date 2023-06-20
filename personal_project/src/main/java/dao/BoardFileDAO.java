@@ -24,8 +24,10 @@ public class BoardFileDAO extends DBConnectionPool {
 
 				if (searchField.equals("title")) {// 검색구분이 '제목'인 경우
 					sql = "select * from board_file " + "where title like '%'||?||'%' " + "order by board_idx desc";
-				} else {// 검색구분이 '내용'인 경우
+				} else if (searchField.equals("content")) {// 검색구분이 '내용'인 경우
 					sql = "select * from board_file " + "where content like '%'||?||'%' " + "order by board_idx desc";
+				} else {// 검색구분이 '작성자'인 경우
+					sql = "select * from board_file " + "where member_id like '%'||?||'%' " + "order by board_idx desc";
 				}
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, searchWord);
@@ -80,8 +82,11 @@ public class BoardFileDAO extends DBConnectionPool {
 				if (searchField.equals("title")) {// 검색구분이 '제목'인 경우
 					sql = "select count(*) from board_file " + "where title like '%'||?||'%' "
 							+ "order by board_idx desc";
-				} else {// 검색구분이 '내용'인 경우
+				} else if (searchField.equals("content")) {// 검색구분이 '내용'인 경우
 					sql = "select count(*) from board_file " + "where content like '%'||?||'%' "
+							+ "order by board_idx desc";
+				} else {
+					sql = "select count(*) from board_file " + "where member_id like '%'||?||'%' "
 							+ "order by board_idx desc";
 				}
 				pstmt = conn.prepareStatement(sql);

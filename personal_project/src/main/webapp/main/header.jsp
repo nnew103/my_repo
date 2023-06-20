@@ -42,7 +42,7 @@
 <body>
 
 	<div id="logo">
-		<img src="resources/img/main_logo.png" />
+		<img src="resources/img/main_logo.png" id="header_logo"/>
 	</div>
 
 	<c:choose>
