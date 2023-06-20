@@ -29,8 +29,8 @@ pageContext.setAttribute("boardInfoVO", vo);
         }
     }
 </script>
-
-<link rel="stylesheet" href="../resources/css/edit_jsp.css" >
+<link rel="stylesheet" href="../resources/css/common.css">
+<link rel="stylesheet" href="../resources/css/board_edit_jsp.css" >
 
 </head>
 <body>

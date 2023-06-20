@@ -19,6 +19,21 @@
 			frm_write.content.focus();
 			return false;
 		}
+		
+		// 파일 선택 검사
+		var fileInput = document.getElementById("attachedFile");
+		if (fileInput.files.length === 0) {
+			alert("파일을 선택하세요");
+			fileInput.focus();
+			return false;
+		}
+	}
+	
+	function checkFileSelected() {
+		var fileInput = document.getElementById("attachedFile");
+		if (fileInput.files.length > 0) {
+			// 파일이 선택되었을 때 필요한 동작 수행
+		}
 	}
 </script>
 
@@ -48,7 +63,7 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td><input type="file" name="attachedFile"></td>
+				<td><input type="file" name="attachedFile" id="attachedFile" onchange="checkFileSelected()"></td>
 			</tr>
 			<tr>
 				<th>내용</th>

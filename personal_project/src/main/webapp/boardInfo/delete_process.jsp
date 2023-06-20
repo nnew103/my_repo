@@ -12,7 +12,7 @@ MemberInfoVO mVo = (MemberInfoVO)session.getAttribute("member_info");
 int m_member_idx = mVo.getMember_idx();
 
 int result = 0;
-if(m_member_idx == vo.getMember_idx()){//작성자가 회원 본인인 것을 다시 확인
+if(m_member_idx == vo.getMember_idx()||(mVo.getGrade()==1||mVo.getGrade()==2)){//작성자가 회원 본인인 것을 다시 확인, 관리자는 삭제가능
 	
 	result = dao.deletePost(vo);
 	dao.close();

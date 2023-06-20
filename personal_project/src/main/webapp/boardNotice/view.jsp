@@ -36,7 +36,8 @@ function deletePost() {
 }
 </script>
 
-<link rel="stylesheet" href="../resources/css/view_jsp.css">
+<link rel="stylesheet" href="../resources/css/common.css">
+<link rel="stylesheet" href="../resources/css/board_view_jsp.css">
 
 </head>
 <body>

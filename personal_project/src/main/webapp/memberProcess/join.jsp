@@ -110,7 +110,7 @@ input {
 <body>
 
 	<header>
-		<jsp:include page="../main/memberProcess_header.jsp" />
+		<jsp:include page="../main/folder_header.jsp" />
 	</header>
 
 	<div id="container">

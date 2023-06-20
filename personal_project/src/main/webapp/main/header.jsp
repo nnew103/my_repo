@@ -51,7 +51,10 @@
 			<div id="member">
 				${member_info.member_name}님&nbsp;&nbsp; 
 				<a href="memberProcess/logout.jsp" style="color: black">LOGOUT</a> |
-				<a href="memberProcess/update.jsp" style="color: black">회원정보수정</a>
+				<a href="memberProcess/update.jsp" style="color: black">EDIT</a>
+				<c:if test="${member_info.grade==1 or member_info.grade==2}">
+					| <a href="memberManagement/list.jsp" style="color: black">관리자</a>
+				</c:if>
 			</div>
 			<div id="menu">
 				<a href="index.jsp">홈</a> <a href="boardInfo/list.jsp">정보공유</a>

@@ -35,8 +35,8 @@ function deletePost() {
     
 }
 </script>
-
-<link rel="stylesheet" href="../resources/css/view_jsp.css">
+<link rel="stylesheet" href="../resources/css/common.css">
+<link rel="stylesheet" href="../resources/css/board_view_jsp.css">
 
 </head>
 <body>
@@ -82,7 +82,7 @@ function deletePost() {
         </tr>
         <tr>
             <td colspan="4" id="td_btn">
-	           <c:if test="${(!empty member_info) and (member_info.member_idx eq boardFileVo.member_idx)}" >
+	           <c:if test="${(!empty member_info) and ((member_info.member_idx eq boardFileVo.member_idx) or (member_info.grade eq 1) or (member_info.grade eq 2))}" >
 	            	<input type="button" onclick="location.href='edit.jsp?no=${boardFileVo.board_idx}'" value="수정하기">
 	                <input type="button" onclick="deletePost();" value="삭제하기">
 	            </c:if>

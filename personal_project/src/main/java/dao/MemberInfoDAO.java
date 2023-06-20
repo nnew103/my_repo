@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import common.DBConnectionPool;
 import vo.MemberInfoVO;
@@ -159,4 +162,140 @@ public class MemberInfoDAO extends DBConnectionPool {
 
 		return result;
 	}
+	
+	// 검색 조건에 맞는 게시물 목록을 반환하는 메소드
+		public List<MemberInfoVO> selectList(Map<String, Object> map) {
+			List<MemberInfoVO> memberList = new ArrayList<MemberInfoVO>();
+
+			String searchWord, searchField, sql;
+			searchWord = searchField = sql = null;
+
+			try {
+
+				if (map.size() != 0) {// 검색어가 있는 경우
+
+					searchWord = (String) map.get("searchWord");
+					searchField = (String) map.get("searchField");
+
+					if (searchField.equals("member_id")) {// 검색구분이 '아이디'인 경우
+						sql = "select * from memberinfo " + "where member_id like '%'||?||'%' and cancel_or_not = 1 " + "order by member_idx desc";
+					} else {// 검색구분이 '이름'인 경우
+						sql = "select * from memberinfo " + "where member_name like '%'||?||'%' and cancel_or_not = 1 " + "order by member_idx desc";
+					}
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, searchWord);
+					// PreparedStatement like를 이용한 검색시 %와 ? 바인딩 방법
+					// --MySQL sql문에서는 like ?로 쓰고 pstmt.setString(1, "%"+searchWord+"%");로
+					// 작성함
+				} else {// 검색어가 없는 경우
+					sql = "select * from memberinfo where cancel_or_not = 1 order by member_idx desc";
+					pstmt = conn.prepareStatement(sql);
+
+				}
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					MemberInfoVO vo = new MemberInfoVO();
+					vo.setMember_idx(rs.getInt("member_idx"));
+					vo.setMember_id(rs.getString("member_id"));
+					vo.setMember_pw(rs.getString("member_pw"));
+					vo.setMember_name(rs.getString("member_name"));
+					vo.setHandphone(rs.getString("handphone"));
+					vo.setMember_email(rs.getString("member_email"));
+					vo.setJoin_date(rs.getDate("join_date"));
+					vo.setUpdate_date(rs.getDate("update_date"));
+					vo.setCancel_date(rs.getDate("cancel_date"));
+					vo.setCancel_or_not(rs.getInt("cancel_or_not"));
+					vo.setGrade(rs.getInt("grade"));
+					
+					memberList.add(vo);
+				}
+
+			} catch (Exception e) {
+				System.out.println("게시물 수 구하는 중 예외 발생");
+				e.printStackTrace();
+			}
+
+			return memberList;
+		}
+	
+		// 검색 조건에 맞는 게시물 수를 반환하는 메소드
+		public int selectCount(Map<String, Object> map) {
+			int totalCount = 0;// 총 게시물 수 반환값
+
+			String searchWord, searchField, sql;
+			searchWord = searchField = sql = null;
+
+			try {
+
+				if (map.size() != 0) {// 검색어가 있는 경우
+
+					searchWord = (String) map.get("searchWord");
+					searchField = (String) map.get("searchField");
+
+					if (searchField.equals("member_id")) {// 검색구분이 '아이디'인 경우
+						sql = "select count(*) from memberinfo " + "where member_id like '%'||?||'%' and cancel_or_not = 1 "
+								+ "order by member_idx desc";
+					} else {// 검색구분이 '이름'인 경우
+						sql = "select count(*) from memberinfo " + "where member_name like '%'||?||'%' and cancel_or_not = 1 "
+								+ "order by member_idx desc";
+					}
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, searchWord);
+					// PreparedStatement like를 이용한 검색시 %와 ? 바인딩 방법
+					// --MySQL sql문에서는 like ?로 쓰고 pstmt.setString(1, "%"+searchWord+"%");로
+					// 작성함
+
+				} else {// 검색어가 없는 경우
+					sql = "select count(*) from memberinfo where cancel_or_not = 1 order by member_idx desc";
+					pstmt = conn.prepareStatement(sql);
+
+				}
+
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					totalCount = rs.getInt(1);
+				}
+
+			} catch (Exception e) {
+				System.out.println("게시물 수 구하는 중 예외 발생");
+				e.printStackTrace();
+
+			}
+
+			return totalCount;
+		}
+
+		
+		// 지정한 회원을 찾아 회원정보를 반환하는 메소드
+		public MemberInfoVO selectView(int member_idx) {
+			MemberInfoVO vo = new MemberInfoVO();
+
+			String sql = "select * from memberinfo where member_idx = ?";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, member_idx);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					vo.setMember_idx(rs.getInt("member_idx"));
+					vo.setMember_id(rs.getString("member_id"));
+					vo.setMember_pw(rs.getString("member_pw"));
+					vo.setMember_name(rs.getString("member_name"));
+					vo.setHandphone(rs.getString("handphone"));
+					vo.setMember_email(rs.getString("member_email"));
+					vo.setJoin_date(rs.getDate("join_date"));
+					vo.setUpdate_date(rs.getDate("update_date"));
+					vo.setCancel_date(rs.getDate("cancel_date"));
+					vo.setCancel_or_not(rs.getInt("cancel_or_not"));
+					vo.setGrade(rs.getInt("grade"));
+				}
+
+			} catch (Exception e) {
+				System.out.println("게시물 상세보기 중 예외 발생");
+				e.printStackTrace();
+			}
+			return vo;
+		}
 }

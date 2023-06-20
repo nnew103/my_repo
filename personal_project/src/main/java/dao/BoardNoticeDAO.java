@@ -6,7 +6,6 @@ import java.util.Map;
 
 import common.DBConnectionPool;
 import vo.BoardNoticeVO;
-import vo.BoardNoticeVO;
 
 public class BoardNoticeDAO extends DBConnectionPool {
 	// 검색 조건에 맞는 게시물 목록을 반환하는 메소드

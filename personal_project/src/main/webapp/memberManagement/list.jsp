@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="vo.BoardInfoVO, dao.BoardInfoDAO, util.JSFunction"%>
+<%@ page import="vo.MemberInfoVO, dao.MemberInfoDAO, util.JSFunction"%>
 <%@ page import="java.util.List, java.util.HashMap, java.util.Map"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 //Dao객체를 생성 및 DB 연결
-BoardInfoDAO dao = new BoardInfoDAO();
+MemberInfoDAO dao = new MemberInfoDAO();
 
 //사용자가 입력한 검색 조건을 Map에 저장
 Map<String, Object> map = new HashMap<String, Object>();
@@ -18,8 +18,8 @@ if (searchWord != null) {
 	map.put("searchWord", searchWord);
 }
 
-List<BoardInfoVO> boardList = dao.selectList(map);//게시물 목록
-pageContext.setAttribute("boardList", boardList);
+List<MemberInfoVO> memberList = dao.selectList(map);//게시물 목록
+pageContext.setAttribute("memberList", memberList);
 
 /*페이지 네비게이션 관련 변수 선언
 1. 총 레코드 수: totalRows
@@ -74,7 +74,7 @@ int lastNum = totalRows % rows_per_page;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글목록</title>
+<title>회원목록</title>
 
 <link rel="stylesheet" href="../resources/css/common.css">
 <link rel="stylesheet" href="../resources/css/board_list_jsp.css">
@@ -89,35 +89,35 @@ int lastNum = totalRows % rows_per_page;
 	<form>
 		<table id="tbl_search">
 			<tr>
-				<td id="table_title">정보공유</td>
+				<td id="table_title">관리자 페이지</td>
 				<td id="td_search">
-				총게시물: ${totalRows}
+				총 회원: ${totalRows}
 				<select name="searchField">
-						<option value="title">제목</option>
-						<option value="content">내용</option>
+						<option value="member_id">아이디</option>
+						<option value="member_name">이름</option>
 				</select> <input type="text" name="searchWord" id="searchWord"> <input
 					type="submit" id="search_btn" value="검색"></td>
 			</tr>
 		</table>
 	</form>
-<hr>
+	<hr>
 
 	<!-- 글목록 테이블 -->
 	<table id="tbl_list">
 		<tr>
 			<th width="">순번</th>
-			<th width="">제목</th>
-			<th width="">작성자</th>
-			<th width="">등록일</th>
-			<th width="">조회수</th>
+			<th width="">아이디</th>
+			<th width="">이름</th>
+			<th width="">전화번호</th>
+			<th width="">가입일</th>
+			<th width="">이메일</th>
 		</tr>
-
 
 		<!-- 글목록 내용 -->
 		<c:choose>
-			<c:when test="${empty boardList}">
+			<c:when test="${empty memberList}">
 				<tr>
-					<td colspan="5">등록된 게시물이 없습니다.</td>
+					<td colspan="6">등록된 회원이 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
@@ -127,12 +127,13 @@ int lastNum = totalRows % rows_per_page;
 							end="${endNum-(10-lastNum)}">
 							<tr>
 								<td>${rowNum}</td>
-								<td id="td_title"><a
-									href="view.jsp?no=${boardList[rowNum-1].board_idx}">${boardList[rowNum-1].title}</a>
+								<td id="td_title">
+								<a href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
 								</td>
-								<td>${boardList[rowNum-1].member_id}</td>
-								<td>${boardList[rowNum-1].post_date}</td>
-								<td>${boardList[rowNum-1].read_count}</td>
+								<td>${memberList[rowNum-1].member_name}</td>
+								<td>${memberList[rowNum-1].handphone}</td>
+								<td>${memberList[rowNum-1].join_date}</td>
+								<td>${memberList[rowNum-1].member_email}</td>
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -140,12 +141,13 @@ int lastNum = totalRows % rows_per_page;
 						<c:forEach var="rowNum" begin="${startNum}" end="${endNum}">
 							<tr>
 								<td>${rowNum}</td>
-								<td id="td_title"><a
-									href="view.jsp?no=${boardList[rowNum-1].board_idx}">${boardList[rowNum-1].title}</a>
+								<td id="td_title">
+								<a href="view.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
 								</td>
-								<td>${boardList[rowNum-1].member_id}</td>
-								<td>${boardList[rowNum-1].post_date}</td>
-								<td>${boardList[rowNum-1].read_count}</td>
+								<td>${memberList[rowNum-1].member_name}</td>
+								<td>${memberList[rowNum-1].handphone}</td>
+								<td>${memberList[rowNum-1].join_date}</td>
+								<td>${memberList[rowNum-1].member_email}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -158,14 +160,6 @@ int lastNum = totalRows % rows_per_page;
 		<!-- 페이지 네비게이션 구현 -->
 		<%@ include file="paging.jsp"%>
 	</div>
-
-	<!-- 목록 하단에 글등록 버튼 구현 -->
-	<c:if test="${!empty member_info}">
-		<div id="div_write">
-			<a href="write.jsp"><button id="write_btn">글 작성</button></a>
-		</div>
-
-	</c:if>
 
 	<footer>
 		<jsp:include page="../main/footer.jsp" />
