@@ -13,10 +13,10 @@ pageContext.setAttribute("boardInfoVO", vo);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글수정</title>
+<title>글 수정</title>
 
 <script>
-	function validateForm() {
+	function validateForm() { // 제목과 내용을 입력했는지 검사
 		if (frm_edit.title.value.length == 0) {
 			alert("제목을 입력하세요");
 			frm_edit.title.focus();
@@ -30,8 +30,8 @@ pageContext.setAttribute("boardInfoVO", vo);
 </script>
 <link rel="stylesheet" href="../resources/css/common.css">
 <link rel="stylesheet" href="../resources/css/board_edit_jsp.css">
-
 </head>
+
 <body>
 
 	<header>
@@ -41,6 +41,7 @@ pageContext.setAttribute("boardInfoVO", vo);
 	<div id="edit_logo">글 수정</div>
 	<hr>
 
+	<!-- 글수정 form -->
 	<form name="frm_edit" method="post" action="edit_process.jsp"
 		onsubmit="return validateForm();">
 		<table>
@@ -60,18 +61,19 @@ pageContext.setAttribute("boardInfoVO", vo);
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" id="view_content" class="editable"
+				<td><textarea name="content" id="edit_content" class="editable"
 						cols="30" rows="10">${boardInfoVO.content}</textarea></td>
 			</tr>
 
 		</table>
 
-	<div id="edit_btn">
-		<input type="reset" value="초기화" id="edit_reset_btn"> <input
-			type="button" value="목록" id="edit_content_btn"
-			onclick="location.href='list.jsp'"> <input type="submit"
-			value="작성완료" id="edit_update_btn">
-	</div>
+		<!-- 초기화, 목록, 작성완료 버튼 구현 -->
+		<div id="edit_btn">
+			<input type="reset" value="초기화" id="edit_reset_btn"> <input
+				type="button" value="목록" id="edit_content_btn"
+				onclick="location.href='list.jsp'"> <input type="submit"
+				value="작성완료" id="edit_update_btn">
+		</div>
 	</form>
 	<footer>
 		<jsp:include page="../main/footer.jsp" />

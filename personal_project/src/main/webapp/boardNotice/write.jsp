@@ -9,10 +9,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글등록</title>
+<title>글 등록</title>
 </head>
 <script>
-	function validateForm() {
+	function validateForm() { // 제목, 내용 입력 검사
 		if (frm_write.title.value.length == 0) {
 			alert("제목을 입력하세요");
 			frm_write.title.focus();
@@ -36,16 +36,17 @@
 
 	<div id="write_logo">글 작성</div>
 	<hr>
-
+	<!-- 글 작성 form -->
 	<form name="frm_write" method="post" action="write_process.jsp"
 		enctype="multipart/form-data" onsubmit="return validateForm()">
 		<table>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" id="writer" value="${member_info.member_id}"
-					disabled> <input type="hidden" name="member_id"
-					value="${member_info.member_id}"> <input type="hidden"
-					name="member_idx" value="${member_info.member_idx}"></td>
+				<td><input type="text" id="writer"
+					value="${member_info.member_id}" disabled> <input
+					type="hidden" name="member_id" value="${member_info.member_id}">
+					<input type="hidden" name="member_idx"
+					value="${member_info.member_idx}"></td>
 			</tr>
 			<tr>
 				<th>제목</th>
@@ -57,9 +58,12 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" id="write_content" cols="30" rows="10"></textarea></td>
+				<td><textarea name="content" id="write_content" cols="30"
+						rows="10"></textarea></td>
 			</tr>
 		</table>
+		
+		<!-- 작성완료, 다시입력, 목록보기 버튼 구현 -->
 		<div id="write_btn">
 			<input type="submit" value="작성완료" id="write_update_btn"> <input
 				type="reset" value="다시입력" id="write_reset_btn"> <input

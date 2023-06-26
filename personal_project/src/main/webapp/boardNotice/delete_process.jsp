@@ -13,18 +13,15 @@ MemberInfoVO mVo = (MemberInfoVO)session.getAttribute("member_info");
 int m_member_idx = mVo.getMember_idx();
 
 int result = 0;
-if(m_member_idx == vo.getMember_idx() && (mVo.getGrade() == 1 || mVo.getGrade() == 2)){//작성자가 회원 본인인 것을 다시 확인, 관리자 확인
-	
+//작성자가 회원 본인인 것을 다시 확인, 슈퍼관리자도 삭제 가능
+if(m_member_idx == vo.getMember_idx() || mVo.getGrade() == 2){
 	result = dao.deletePost(vo);
 	dao.close();
 
-	if(result == 1){//성공시 글목록 페이지로 이동
+	if(result == 1){//성공 시 글목록 페이지로 이동
 		JSFunction.alertLocation("삭제되었습니다", "list.jsp", out);
-	
-	}else{//실패시 이전 페이지로 이동
+	}else{//실패 시 이전 페이지로 이동
 		JSFunction.alertBack("본인만 삭제할 수 있습니다", out);
 	}
-	
 }
-
 %>    

@@ -6,7 +6,7 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest, com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 
 <%
-String saveDirectory = application.getRealPath("/notice_uploads");//업로드된 파일을 저장할 디렉터리
+String saveDirectory = application.getRealPath("/notice_uploads"); //업로드된 파일을 저장할 디렉터리
 int maxPostSize = 1024*1024*3; //파일 최대 크기(3MB)
 String encoding = "UTF-8";
 
@@ -51,16 +51,14 @@ try{
 	int result = dao.updateBoard(vo);
 	dao.close();
 
-	if(result == 1){ //글등록 성공시
+	if(result == 1){ //글 등록 성공 시
 		response.sendRedirect("view.jsp?no="+vo.getBoard_idx());
 	
-	}else{//글등록 실패시
+	}else{//글 등록 실패 시
 		JSFunction.alertBack("수정하기에 실패했습니다", out);
 	}
 }catch(Exception e)	{
 	System.out.println("글수정 중 예외 발생");
 	e.printStackTrace();
-
 }
-
 %>

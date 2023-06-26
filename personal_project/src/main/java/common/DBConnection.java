@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DBConnection {
-	//오라클 JDBC파일(ojdbc6.jar)을 WEB-INF의 lib폴더에 복사해서 붙여넣기
 	private static final String DRIVER ="oracle.jdbc.driver.OracleDriver";
 	private static final String URL="jdbc:oracle:thin:@localhost:1521:myoracle";
 	private static final String USER="web_dev";

@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-//Dao객체를 생성 및 DB 연결
 MemberInfoDAO dao = new MemberInfoDAO();
 
 //사용자가 입력한 검색 조건을 Map에 저장
@@ -55,9 +54,9 @@ if (request.getParameter("pageBlock") == null) {
 }
 int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 int lastNum = totalRows % rows_per_page;
-if (totalRows > 9 && lastNum == 0) lastNum = 10;
+if (totalRows > 9 && lastNum == 0)
+	lastNum = 10;
 %>
-<!-- 변수들을 EL로 사용하기 위해 core라이브러리의 set태그로 다시 변수 저장함 -->
 <c:set var="totalRows" value="<%=totalRows%>" />
 <c:set var="rows_per_page" value="<%=rows_per_page%>" />
 <c:set var="pages_per_block" value="<%=pages_per_block%>" />
@@ -86,14 +85,13 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 		<jsp:include page="../main/folder_header.jsp" />
 	</header>
 
-	<!-- 검색 폼 -->
+	<!-- 검색 form -->
 	<form>
 		<table id="tbl_search">
 			<tr>
 				<td id="table_title">관리자 페이지</td>
-				<td id="td_search">
-				총 회원: ${totalRows}
-				<select name="searchField">
+				<td id="td_search">총 회원: ${totalRows} <select
+					name="searchField">
 						<option value="member_id">아이디</option>
 						<option value="member_name">이름</option>
 				</select> <input type="text" name="searchWord" id="searchWord"> <input
@@ -103,7 +101,7 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 	</form>
 	<hr>
 
-	<!-- 글목록 테이블 -->
+	<!-- 글목록 table -->
 	<table id="tbl_list">
 		<tr>
 			<th width="">순번</th>
@@ -129,7 +127,22 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 							<tr>
 								<td>${rowNum}</td>
 								<td id="td_title">
-								<a href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
+									<!-- 관리자 페이지에서 슈퍼 관리자의 회원정보 수정 권한은 슈퍼관리자만 가짐 --> <c:choose>
+										<c:when
+											test="${memberList[rowNum-1].grade==2&&member_info.grade==2}">
+											<!-- 슈퍼관리자의 경우 -->
+											<a href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
+										</c:when>
+										<c:when
+											test="${memberList[rowNum-1].grade==2&&member_info.grade!=2}">
+											<!-- 슈퍼관리자가 아닐경우 -->
+      										${memberList[rowNum-1].member_id}
+    									</c:when>
+										<c:otherwise>
+											<!-- 나머지 회원정보 -->
+											<a href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
+										</c:otherwise>
+									</c:choose>
 								</td>
 								<td>${memberList[rowNum-1].member_name}</td>
 								<td>${memberList[rowNum-1].handphone}</td>
@@ -142,8 +155,8 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 						<c:forEach var="rowNum" begin="${startNum}" end="${endNum}">
 							<tr>
 								<td>${rowNum}</td>
-								<td id="td_title">
-								<a href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
+								<td id="td_title"><a
+									href="update.jsp?no=${memberList[rowNum-1].member_idx}">${memberList[rowNum-1].member_id}</a>
 								</td>
 								<td>${memberList[rowNum-1].member_name}</td>
 								<td>${memberList[rowNum-1].handphone}</td>

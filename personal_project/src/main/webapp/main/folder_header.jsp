@@ -6,15 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Header</title>
-
 <link rel="stylesheet" href="../resources/css/header_jsp.css">
-<link
-	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
-	rel="stylesheet">
 </head>
-<body>
+
+<body><!-- 폴더 내에 있는 jsp에 사용하는 header -->
+
 	<div id="logo">
-		<img src="../resources/img/main_logo.png" id="header_logo"/>
+		<img src="../resources/img/main_logo.png" id="header_logo" />
 	</div>
 
 	<c:choose>
@@ -24,6 +22,7 @@
 				${member_info.member_name}님&nbsp;&nbsp; <a
 					href="../memberProcess/logout.jsp" style="color: black">LOGOUT</a>
 				| <a href="../memberProcess/update.jsp" style="color: black">EDIT</a>
+				<!-- 관리자용 -->
 				<c:if test="${member_info.grade==1 or member_info.grade==2}">
 					| <a href="../memberManagement/list.jsp" style="color: black">관리자</a>
 				</c:if>
@@ -49,4 +48,7 @@
 		</c:otherwise>
 	</c:choose>
 </body>
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+	rel="stylesheet">
 </html>

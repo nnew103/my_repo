@@ -3,15 +3,15 @@ package vo;
 import java.util.Date;
 
 public class BoardInfoVO {
-	private int board_idx;//게시글 번호(board_basic테이블의 기본키)
-	private String title;//제목
-	private String content;//내용
-	private Date post_date;//등록일
-	private int read_count;//조회수
+	private int board_idx;	//게시글 번호(board_basic테이블의 기본키)
+	private String title;	//제목
+	private String content;	//내용
+	private Date post_date;	//등록일
+	private int read_count;	//조회수
 	private String member_id;//작성자 아이디
-	private int member_idx;//작성자 번호(member테이블에 대한 외래키)
-	private int del_or_not;//삭제 여부(1:유지, -1:삭제)
-	private Date del_date;//삭제일
+	private int member_idx;	//작성자 번호(member테이블에 대한 외래키)
+	private int del_or_not;	//삭제 여부(1:유지, -1:삭제)
+	private Date del_date;	//삭제일
 	
 	public int getBoard_idx() {
 		return board_idx;

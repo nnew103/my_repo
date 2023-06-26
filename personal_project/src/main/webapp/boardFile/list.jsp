@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-//Dao객체를 생성 및 DB 연결
 BoardFileDAO dao = new BoardFileDAO();
 
 //사용자가 입력한 검색 조건을 Map에 저장
@@ -17,8 +16,8 @@ if (searchWord != null) {
 	map.put("searchField", searchField);
 	map.put("searchWord", searchWord);
 }
-
-List<BoardFileVO> boardList = dao.selectList(map);//게시물 목록
+//게시물 목록
+List<BoardFileVO> boardList = dao.selectList(map);
 pageContext.setAttribute("boardList", boardList);
 
 /*페이지 네비게이션 관련 변수 선언
@@ -34,7 +33,7 @@ pageContext.setAttribute("boardList", boardList);
 10. 페이지 마지막 일의자리 숫자: lastNum
 */
 
-int totalRows = dao.selectCount(map);//총 레코드 수 
+int totalRows = dao.selectCount(map);
 dao.close();
 int rows_per_page = 10;
 int pages_per_block = 5;
@@ -55,9 +54,9 @@ if (request.getParameter("pageBlock") == null) {
 }
 int lastPageBlock = (int) Math.ceil((double) totalPageNum / pages_per_block);
 int lastNum = totalRows % rows_per_page;
-if (totalRows > 9 && lastNum == 0) lastNum = 10;
+if (totalRows > 9 && lastNum == 0)
+	lastNum = 10;
 %>
-<!-- 변수들을 EL로 사용하기 위해 core라이브러리의 set태그로 다시 변수 저장함 -->
 <c:set var="totalRows" value="<%=totalRows%>" />
 <c:set var="rows_per_page" value="<%=rows_per_page%>" />
 <c:set var="pages_per_block" value="<%=pages_per_block%>" />
@@ -76,24 +75,23 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 <head>
 <meta charset="UTF-8">
 <title>글목록</title>
-
 <link rel="stylesheet" href="../resources/css/common.css">
 <link rel="stylesheet" href="../resources/css/board_list_jsp.css">
 </head>
 
 <body>
+
 	<header>
 		<jsp:include page="../main/folder_header.jsp" />
 	</header>
 
-	<!-- 검색 폼 -->
+	<!-- 검색 form -->
 	<form>
 		<table id="tbl_search">
 			<tr>
 				<td id="table_title">중고도서 거래/자료 나눔</td>
-				<td id="td_search">
-				총게시물: ${totalRows}
-				<select name="searchField">
+				<td id="td_search">총게시물: ${totalRows} <select
+					name="searchField">
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 						<option value="id">작성자</option>
@@ -104,7 +102,7 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 	</form>
 	<hr>
 
-	<!-- 글목록 테이블 -->
+	<!-- 글목록 table -->
 	<table id="tbl_list">
 		<tr>
 			<th width="">번호</th>
@@ -118,6 +116,7 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 		<!-- 글목록 내용 -->
 		<c:choose>
 			<c:when test="${empty boardList}">
+			<!-- 게시물이 없을 경우 -->
 				<tr>
 					<td colspan="6">등록된 게시물이 없습니다.</td>
 				</tr>
@@ -125,8 +124,10 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 			<c:otherwise>
 				<c:choose>
 					<c:when test="${pageNum eq totalPageNum}">
+						<!-- 현재 보고 있는 페이지와 전체 페이지 번호 수가 같으면 마지막 페이지이므로 -->
 						<c:forEach var="rowNum" begin="${startNum}"
 							end="${endNum-(10-lastNum)}">
+							<!-- 테이블에 표시할 끝번호-(10-페이지 마지막 일의자리 수)만큼 반복하여 게시물 출력 -->
 							<tr>
 								<td>${rowNum}</td>
 								<td id="td_title"><a
@@ -137,7 +138,8 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 										test="${!empty boardList[rowNum-1].originFile}">
 										<a
 											href="download.jsp?oName=${boardList[rowNum-1].originFile}&sName=${boardList[rowNum-1].saveFile}">
-											<img src="../resources/img/download.png" width="10px" height="12px">
+											<img src="../resources/img/download.png" width="15px"
+											height="14px">
 										</a>
 									</c:if></td>
 								<td>${boardList[rowNum-1].post_date}</td>
@@ -146,6 +148,7 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
+						<!-- 현재 보고있는 페이지가 마지막 페이지가 아닐 경우엔 rows_per_page만큼 출력 -->
 						<c:forEach var="rowNum" begin="${startNum}" end="${endNum}">
 							<tr>
 								<td>${rowNum}</td>
@@ -176,7 +179,7 @@ if (totalRows > 9 && lastNum == 0) lastNum = 10;
 		<%@ include file="paging.jsp"%>
 	</div>
 
-	<!-- 목록 하단에 글등록 버튼 구현 -->
+	<!-- 글 작성 버튼 구현, 회원이 아니면 버튼을 볼 수 없음 -->
 	<c:if test="${!empty member_info}">
 		<div id="div_write">
 			<a href="write.jsp"><button id="write_btn">글등록</button></a>

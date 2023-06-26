@@ -51,12 +51,11 @@ try {
     int result = dao.insertBoard(vo);
     dao.close();
 
-    if (result == 1) { // 글등록 성공시
+    if (result == 1) { // 글 등록 성공시
         response.sendRedirect("list.jsp");
     } else {
         JSFunction.alertBack("글등록에 실패했습니다", out);
     }
-
 } catch (Exception e) {
     System.out.println("글등록 중 예외 발생");
     e.printStackTrace();

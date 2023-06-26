@@ -3,7 +3,6 @@
 <%@ page import="dao.MemberInfoDAO, vo.MemberInfoVO" %>  
 
 <%
-//페이지 영역에 저장된 자바빈 객체 가져오기
 MemberInfoVO vo = (MemberInfoVO)session.getAttribute("member_info");
 
 MemberInfoDAO dao = new MemberInfoDAO();

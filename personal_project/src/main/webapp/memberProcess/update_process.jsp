@@ -7,11 +7,8 @@
 <jsp:setProperty name="MemberInfoVO" property="*" />
 
 <%
-//페이지 영역에 저장된 자바빈 객체 가져오기
 MemberInfoVO vo = (MemberInfoVO)pageContext.getAttribute("MemberInfoVO");
-
 MemberInfoDAO dao = new MemberInfoDAO();
-
 MemberInfoVO vo2 = dao.update(vo); 
 
 if(vo2 != null){//회원정보 수정 성공시
@@ -23,5 +20,4 @@ if(vo2 != null){//회원정보 수정 성공시
 	RequestDispatcher rd = request.getRequestDispatcher("update.jsp");
 	rd.forward(request, response);
 }
-
 %>

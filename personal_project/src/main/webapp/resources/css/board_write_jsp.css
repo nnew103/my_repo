@@ -46,11 +46,13 @@ td input[type="text"], td textarea {
 
 th {
 	font-family: 'NanumBarunGothic';
+	font-size: 20px;
 }
 
 td {
 	font-family: 'NanumBarunGothicLight';
 	text-align: left;
+	font-size: 18px;
 }
 
 #writer, #write_title, #write_content {

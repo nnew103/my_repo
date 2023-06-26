@@ -3,17 +3,17 @@ package vo;
 import java.util.Date;
 
 public class BoardFileVO{
-	private int board_idx;
-	private String title;
-	private String content;
-	private String originFile;
-	private String saveFile;
-	private Date post_date;
-	private int read_count;
-	private int member_idx;
-	private String member_id;
-	private int del_or_not;
-	private Date del_date;
+	private int board_idx;		// 게시판 일련번호
+	private String title;		// 제목
+	private String content;		// 내용
+	private String originFile;	// 원본 파일
+	private String saveFile;	// 저장 파일
+	private Date post_date;		// 등록일
+	private int read_count;		// 조회수
+	private int member_idx;		// 회원 일련번호
+	private String member_id;	// 회원 id
+	private int del_or_not;		// 회원 탈퇴 여부
+	private Date del_date;		// 회원 탈퇴 날짜
 	
 	public int getBoard_idx() {
 		return board_idx;

@@ -7,9 +7,8 @@
 <title>글 작성</title>
 <link rel="stylesheet" href="../resources/css/common.css">
 <link rel="stylesheet" href="../resources/css/board_write_jsp.css">
-</head>
 <script>
-	function validateForm() {
+	function validateForm() { // 제목, 내용 입력 검사 및 파일 첨부 검사
 		if (frm_write.title.value.length == 0) {
 			alert("제목을 입력하세요");
 			frm_write.title.focus();
@@ -19,7 +18,6 @@
 			frm_write.content.focus();
 			return false;
 		}
-
 		// 파일 선택 검사
 		var fileInput = document.getElementById("attachedFile");
 		if (fileInput.files.length === 0) {
@@ -36,8 +34,8 @@
 		}
 	}
 </script>
-
-<link rel="stylesheet" href="../resources/css/write_jsp.css">
+<link rel="stylesheet" href="../resources/css/board_write_jsp.css">
+</head>
 
 <body>
 
@@ -48,6 +46,7 @@
 	<div id="write_logo">글 작성</div>
 	<hr>
 	
+	<!-- 글 작성 form -->
 	<form name="frm_write" method="post" action="write_process.jsp"
 		enctype="multipart/form-data" onsubmit="return validateForm()">
 		<table>
@@ -74,6 +73,7 @@
 
 		</table>
 		
+		<!-- 작성완료, 다시입력, 목록보기 버튼 구현 -->
 		<div id="write_btn">
 			<input type="submit" value="작성완료" id="write_update_btn"> 
 			<input type="reset" value="다시입력" id="write_reset_btn"> 

@@ -8,8 +8,7 @@
 <title>페이지네비게이션</title>
 </head>
 <body>
-
-	<!-- 검색어가 있는 경우와 없는 경우를 구분해서 페이징 처리함 -->
+	<!-- 검색어가 있는 경우와 없는 경우를 구분해서 페이징 처리 -->
 	<c:choose>
 		<c:when test="${!empty searchWord}">
 			<!-- 검색어가 있는 경우 -->
@@ -82,8 +81,5 @@
 			</c:if>
 		</c:otherwise>
 	</c:choose>
-
-
-
 </body>
 </html>

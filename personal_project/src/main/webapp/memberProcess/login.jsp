@@ -24,6 +24,10 @@
 	font-family: 'NanumBarunGothic';
 }
 
+#msg {
+	font-family: 'NanumBarunGothic';
+}
+
 hr {
 	border: 0;
 	height: 5px;
@@ -36,7 +40,6 @@ hr {
 
 #content input {
 	margin-bottom: 15px;
-	/* 아래쪽 여백 설정 */
 }
 
 input {
@@ -63,13 +66,14 @@ input[type="button"] {
 	background-color: #15075f;
 	color: white;
 	cursor: pointer;
-	/*마우스를 올려놓았을 때 커서가 손모양으로 변경됨*/
 	border-radius: 5px;
 }
 </style>
 <script type="text/javascript" src="../resources/js/checkLogin.js"></script>
 </head>
+
 <body>
+
 	<header>
 		<jsp:include page="../main/folder_header.jsp" />
 	</header>
@@ -78,6 +82,7 @@ input[type="button"] {
 		<div class="login_logo" id="login_logo">로그인</div>
 		<hr>
 		<div id="content">
+		<!-- 로그인 form -->
 			<form name="frm_login" action="login_process.jsp" method="post">
 				<input type="text" name="member_id" placeholder="아이디"><br>
 				<input type="password" name="member_pw" placeholder="비밀번호"><br>
@@ -87,10 +92,10 @@ input[type="button"] {
 
 		<c:choose>
 			<c:when test="${param.msg eq 'ok'}">
-				<div id="msg">회원가입이 정상적으로 이루어졌습니다</div>
+				<div id="msg">회원가입이 정상적으로 이루어졌습니다.</div>
 			</c:when>
 			<c:when test="${param.msg eq 'fail'}">
-				<div id="msg">회원정보가 없거나 아이디나 비밀번호가 일치하지 않습니다</div>
+				<div id="msg">회원정보가 없거나 아이디나 비밀번호가 일치하지 않습니다.</div>
 			</c:when>
 		</c:choose>
 	</section>
@@ -98,6 +103,7 @@ input[type="button"] {
 	<footer>
 		<jsp:include page="../main/footer.jsp" />
 	</footer>
+	
 </body>
 
 <link rel="stylesheet" href="../resources/css/common.css">

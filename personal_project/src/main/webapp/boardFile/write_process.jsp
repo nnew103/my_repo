@@ -6,8 +6,8 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest, com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 
 <%
-String saveDirectory = application.getRealPath("/uploads");//업로드된 파일을 저장할 디렉터리
-int maxPostSize = 1024*1024*3; //파일 최대 크기(3MB)
+String saveDirectory = application.getRealPath("/uploads"); // 업로드된 파일을 저장할 디렉터리
+int maxPostSize = 1024*1024*3; // 파일 최대 크기(3MB)
 String encoding = "UTF-8";
 
 try{
@@ -18,7 +18,7 @@ try{
 	
 	//2. 저장 디렉터리에 저장할 새로운 파일명 만들기
 	String originFileName = mRequest.getFilesystemName("attachedFile"); //원본 파일 이름
-	String ext = originFileName.substring(originFileName.lastIndexOf("."));//파일 확장자를 추출함
+	String ext = originFileName.substring(originFileName.lastIndexOf("."));//파일 확장자를 추출
 	String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
 	String saveFileName = now+ext;//새로운 파일이름: 업로드 일시.확장자
 
@@ -43,11 +43,10 @@ try{
 	
 	//DAO 객체를 통해 DB에 VO객체에 저장된 내용 저장
 	BoardFileDAO dao = new BoardFileDAO();
-	
 	int result = dao.insertBoard(vo);
 	dao.close();
 	
-	if(result == 1){//글등록 성공시
+	if(result == 1){//글 등록 성공시
 		response.sendRedirect("list.jsp");
 	}else{
 		JSFunction.alertBack("글등록에 실패했습니다", out);
@@ -57,5 +56,4 @@ try{
 	System.out.println("글등록 중 예외 발생");
 	e.printStackTrace();
 }
-
 %>

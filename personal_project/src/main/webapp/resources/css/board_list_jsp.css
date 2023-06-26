@@ -38,28 +38,23 @@ table {
 	top: 230px;
 }
 
+#tbl_list td img {
+  width: 15px;
+  height: 14px;
+}
+
 #tbl_list tr, #tbl_list th, #tbl_list td {
 	border-color: rgb(199, 198, 198);
 	border-style: solid;
-	border-width: 0 0 2px 0; /* 가로선만 표시합니다 */
+	border-width: 0 0 2px 0; /* 가로선만 표시 */
 	height: 15px;
 	padding: 5px;
 	text-align: center;
 	font-family: 'NanumGothic';
 }
 
-
-tr:last-child th, tr:last-child td {
-	border-bottom: none; /* 마지막 행의 가로선을 제거합니다 */
-}
-
 #td_title {
 	text-align: left;
-}
-
-caption {
-	margin-bottom: 30px;
-	margin-top: 70px;
 }
 
 select, input {

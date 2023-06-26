@@ -6,7 +6,7 @@
 <%
 int member_idx = Integer.parseInt(request.getParameter("no")); // 일련번호 받기 
 
-MemberInfoDAO dao = new MemberInfoDAO(); // DAO 생성 
+MemberInfoDAO dao = new MemberInfoDAO();
 MemberInfoVO vo = dao.selectView(member_idx); // 게시물 가져오기
 dao.close();
 pageContext.setAttribute("member_update_Vo", vo);
@@ -96,7 +96,6 @@ input {
 	margin-top: 20px;
 	margin-left: 10px;
 	cursor: pointer;
-	/*마우스를 올려놓았을 때 커서가 손모양으로 변경됨*/
 	font-family: 'NanumBarunGothic';
 	border-radius: 5px;
 }
@@ -106,8 +105,20 @@ input {
 	color: white;
 }
 </style>
-
+<script>
+	function noSpaceForm(obj) { // 공백 검사
+		let str_space = /\s/; // 공백 체크
+		if (str_space.exec(obj.value)) { // 공백 체크
+			alert("해당 항목에는 공백을 사용할 수 없습니다.\n\n공백이 제거됩니다.");
+			obj.focus();
+			obj.value = obj.value.replace(' ', ''); // 공백제거
+			return false;
+		}
+	}
+</script>
+<script type="text/javascript" src="../resources/js/checkUpdate.js"></script>
 </head>
+
 <body>
 
 	<header>
@@ -117,6 +128,9 @@ input {
 	<div id="update_container">
 		<div id="update_logo">회원정보 수정</div>
 		<hr>
+		
+		<!-- 회원정보 수정 form -->
+		<!-- 관리자들은 회원정보를 수정할 수 있음 -->
 		<form action="update_process.jsp" method="post" name="frm_update">
 			<table>
 				<tr>
@@ -131,12 +145,12 @@ input {
 				</tr>
 				<tr>
 					<td><label for="pswd">비밀번호</label></td>
-					<td><input type="password" name="member_pw" id="pswd"
+					<td><input type="password" name="member_pw" id="pswd" onkeyup="noSpaceForm(this);"
 						value="${member_update_Vo.member_pw}"></td>
 				</tr>
 				<tr>
 					<td><label for="pswd2">비밀번호 확인</label></td>
-					<td><input type="password" name="member_pw2" id="pswd2"
+					<td><input type="password" name="member_pw2" id="pswd2" onkeyup="noSpaceForm(this);"
 						value="${member_update_Vo.member_pw}"></td>
 				</tr>
 				<tr>
@@ -146,32 +160,28 @@ input {
 				</tr>
 				<tr>
 					<td><label for="handphone">전화번호</label></td>
-
-
-
-					<td><input type="text" name="handphone" id="handphone"
+					<td><input type="text" name="handphone" id="handphone" onkeyup="noSpaceForm(this);"
 						value="${member_update_Vo.handphone}"></td>
 				</tr>
 				<tr>
 					<td><label for="email">이메일</label></td>
-					<td><input type="email" name="member_email" id="email"
+					<td><input type="text" name="member_email" id="email" onkeyup="noSpaceForm(this);"
 						value="${member_update_Vo.member_email}"></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td style="text-align: right;">
+					<!-- 회원탈퇴는 슈퍼관리자만 진행 가능 -->
 					<c:if test="${member_info.grade==2}">
 							<a href="cancel.jsp?no=${member_update_Vo.member_idx}" style="color: gray">회원탈퇴</a>
 						</c:if> 
 						<input type="button" id="cancel_btn" value="취소"
-						onclick="history.back()"> <input type="submit"
+						onclick="history.back()"> <input type="button"
 						id="update_btn" value="완료"></td>
 				</tr>
 			</table>
-
 		</form>
 	</div>
-
 
 	<footer>
 		<jsp:include page="../main/footer.jsp" />

@@ -7,7 +7,6 @@
 <jsp:setProperty name="MemberInfoVO" property="*" />
 
 <%
-//페이지 영역에 저장된 자바빈 객체 가져오기
 MemberInfoVO vo = (MemberInfoVO)pageContext.getAttribute("MemberInfoVO");
 
 MemberInfoDAO dao = new MemberInfoDAO();

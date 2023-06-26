@@ -89,13 +89,20 @@ input {
 	width: 30%;
 }
 
+#checkId_btn {
+	cursor: pointer;
+	width: 25%;
+	height: 35px;
+	border-radius: 5px;
+	text-align: center;
+}
+
 #join_btn, #reset_btn {
 	width: 25%;
 	height: 40px;
 	margin-top: 20px;
 	margin-left: 10px;
 	cursor: pointer;
-	/*마우스를 올려놓았을 때 커서가 손모양으로 변경됨*/
 	border-radius: 5px;
 }
 
@@ -105,8 +112,20 @@ input {
 }
 </style>
 <link rel="stylesheet" href="../resources/css/common.css">
+<script>
+	function noSpaceForm(obj) { // 공백 검사
+		let str_space = /\s/; // 공백 체크
+		if (str_space.exec(obj.value)) { // 공백 체크
+			alert("해당 항목에는 공백을 사용할 수 없습니다.\n\n공백이 제거됩니다.");
+			obj.focus();
+			obj.value = obj.value.replace(' ', ''); // 공백제거
+			return false;
+		}
+	}
+</script>
 <script type="text/javascript" src="../resources/js/checkMember.js"></script>
 </head>
+
 <body>
 
 	<header>
@@ -117,6 +136,7 @@ input {
 		<div id="join_logo">회원 가입</div>
 		<hr>
 		<div id="content">
+		<!-- 회원가입 form -->
 			<form action="join_process.jsp" method="post" name="frm_join">
 				<table>
 					<tr>
@@ -124,21 +144,21 @@ input {
 						<td>
 							<div class="id-input-wrapper">
 								<input type="text" name="member_id" id="id"
-									placeholder="아이디(5~12글자)를 입력해주세요." style="width: 70%;">
-								<input type="button" id="checkId_btn" value="중복확인"
-									style="width: 30%;">
+									placeholder="아이디(2~12글자)를 입력해주세요." style="width: 70%;"
+									onkeyup="noSpaceForm(this);"> <input type="button"
+									id="checkId_btn" value="중복확인" style="width: 30%;">
 							</div> <input type="hidden" name="confirm_id">
 						</td>
 					</tr>
 					<tr>
 						<td><label for="pswd">비밀번호</label></td>
-						<td><input type="password" name="member_pw" id="pswd">
-						</td>
+						<td><input type="password" name="member_pw" id="pswd"
+							onkeyup="noSpaceForm(this);"></td>
 					</tr>
 					<tr>
 						<td><label for="pswd2">비밀번호 확인</label></td>
-						<td><input type="password" name="member_pw2" id="pswd2">
-						</td>
+						<td><input type="password" name="member_pw2" id="pswd2"
+							onkeyup="noSpaceForm(this);"></td>
 					</tr>
 					<tr>
 						<td><label for="name">이름</label></td>
@@ -147,12 +167,13 @@ input {
 					<tr>
 						<td><label for="handphone">전화번호</label></td>
 						<td><input type="text" name="handphone" id="handphone"
-							placeholder="전화번호 입력"></td>
+							placeholder="(-)를 빼고 작성해주세요." placeholder="전화번호 입력"
+							onkeyup="noSpaceForm(this);"></td>
 					</tr>
 					<tr>
 						<td><label for="email">이메일</label></td>
-						<td><input type="email" name="member_email" id="email"
-							placeholder="이메일 입력"></td>
+						<td><input type="text" name="member_email" id="email"
+							placeholder="이메일 입력" onkeyup="noSpaceForm(this);"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: right;"><input
@@ -163,6 +184,7 @@ input {
 			</form>
 		</div>
 	</div>
+	
 	<footer>
 		<jsp:include page="../main/footer.jsp" />
 	</footer>
